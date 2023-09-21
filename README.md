@@ -13,7 +13,7 @@ Specifically, our model includes two modules: retrieval module and generation mo
 ```
 conda create -n RACE python=3.6 -y
 conda activate RACE
-pip install torch==1.10 transformers==4.12.5 tqdm==4.64.1 prettytable==2.5.0 gdown==4.5.1 more-itertools==8.14.0 tensorboardX==2.5.1 setuptools==59.5.0  tensorboard== 2.10.1
+pip install torch==1.10 transformers==4.12.5 tqdm==4.64.1 prettytable==2.5.0 gdown==4.5.1 more-itertools==8.14.0 tensorboardX==2.5.1 setuptools==59.5.0  tensorboard==2.10.1
 ```
 ## Dataset
 
