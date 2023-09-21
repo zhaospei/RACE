@@ -9,5 +9,4 @@ __pycache__/
 events.out.*
 saved_model/*
 *.tar.gz
-dataset/*
 #
