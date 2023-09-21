@@ -97,6 +97,11 @@ def subtokenize_code(line, language='java'):
     
     return subtokens, labels, indices
 
+def dump_to_file(obj, file):
+    with open(file,'w+') as f:
+        for el in obj:
+            f.write(json.dumps(el)+'\n')
+
 def preproces(diff_filename, msg_filename, lang_filename, output_dir):
     data = list()
     diff_per_file = open(diff_filename,"r").read().split("\n")
@@ -141,13 +146,19 @@ def preproces(diff_filename, msg_filename, lang_filename, output_dir):
                 if len(line) < 1: # blank line
                     continue
                 if line.startswith('ppp ') or line.startswith('mmm '):
+                    if (len(old_single_lines) > 0 or len(new_single_lines) > 0) and not nxt_file:
+                        old_single_lines_ls.append(old_single_lines)
+                        new_single_lines_ls.append(new_single_lines)
+                        new_single_lines = list()
+                        old_single_lines = list()
+                    if line.startswith('ppp '):
+                        new_single_lines.append(line)
+                    if line.startswith('mmm '):
+                        old_single_lines.append(line)
                     nxt_file = True
                 else:
                     st = line[0]
                     if nxt_file:
-                        if len(old_single_lines) > 0 or len(new_single_lines) > 0:
-                            old_single_lines_ls.append(old_single_lines)
-                            new_single_lines_ls.append(new_single_lines)
                         cur_lang += 1
                         nxt_file = False
                     if st != '+' and st != '-': # the code not changed 
@@ -185,15 +196,11 @@ def preproces(diff_filename, msg_filename, lang_filename, output_dir):
                 for token in span_diff_tokens:
                     diff_tokens.append(token)
             
-            example = dict()
             msg = pattern.findall(i['msg'])
             msg = [i for i in msg if i != '' and not i.isspace()]
-            example['msgtext'] = i['msg']
-            example['msg_tokens'] = msg
-            example['difftext'] = diff
-            example['diff_tokens'] = diff_tokens
 
-            examples.append(example)
+            # examples.append({'msgtext':i['msg'],'msg_tokens':msg,'difftext':diff, 'diff': diff_tokens})
+            examples.append({'diff': diff_tokens, 'msg_tokens':msg})
 
             pbar.update(1)
     
@@ -203,7 +210,7 @@ def preproces(diff_filename, msg_filename, lang_filename, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     out_file = diff_filename.split('/')[-1]
     out_file = '.'.join([w for w in out_file.split('.')[:-1]])
-    json.dump(examples, open(os.path.join(output_dir, '{}.jsonl'.format(out_file)), 'w'))
+    dump_to_file(examples, os.path.join(output_dir, '{}.jsonl'.format(out_file)))
     print(len(examples))
 
 if __name__ == "__main__":
