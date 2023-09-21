@@ -2,7 +2,7 @@ lang=$1
 
 # optimizer
 lr=5e-5
-batch_size=32
+batch_size=16
 beam_size=10
 epochs=10
 
