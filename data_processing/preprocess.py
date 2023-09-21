@@ -200,7 +200,7 @@ def preproces(diff_filename, msg_filename, lang_filename, output_dir):
             msg = [i for i in msg if i != '' and not i.isspace()]
 
             # examples.append({'msgtext':i['msg'],'msg_tokens':msg,'difftext':diff, 'diff': diff_tokens})
-            examples.append({'diff': diff_tokens, 'msg_tokens':msg})
+            examples.append({'diff': diff_tokens, 'msg_token':msg})
 
             pbar.update(1)
     
