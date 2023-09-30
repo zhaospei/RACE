@@ -147,8 +147,7 @@ def computeMaps(predictions, goldfile):
 
   for row in predictions:
     cols = row.strip().split('\t')
-    if len(cols) == 1:
-      raise
+    if len(cols) == 1: # when prd is None
       (rid, pred) = (cols[0], '') 
     else:
       (rid, pred) = (cols[0], cols[1]) 
