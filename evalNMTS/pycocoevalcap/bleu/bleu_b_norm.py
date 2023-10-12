@@ -140,32 +140,6 @@ def bleu(refs,  candidate, ground=0, smooth=1):
 def splitPuncts(line):
   return ' '.join(re.findall(r"[\w]+|[^\s\w]", line))
 
-def bleu_sentence(prd, golds):
-  (goldMap, predictionMap) = computeSentenceMaps(prd, golds)
-  return bleu_sentence_from_map(goldMap, predictionMap)[0]
-
-def computeSentenceMaps(prediction, golds):
-  predictionMap = {}
-  goldMap = {}
-
-  predictionMap = [splitPuncts(prediction.strip().lower())]
-  
-  goldMap = []
-
-  for gold in golds:
-    goldMap.append(splitPuncts(gold.strip().lower()))
-
-  return (goldMap, predictionMap)
-
-#m1 is the reference map
-#m2 is the prediction map
-def bleu_sentence_from_map(m1, m2):
-  score = [0] * 5
-  num = 0.0
-  bl = bleu(m1, m2[0])
-  score = [ score[i] + bl[i] for i in range(0, len(bl))]
-  return [s * 100.0 for s in score]
-
 def computeMaps(predictions, goldfile):
   predictionMap = {}
   goldMap = {}
@@ -173,9 +147,8 @@ def computeMaps(predictions, goldfile):
 
   for row in predictions:
     cols = row.strip().split('\t')
-    if len(cols) == 1:
+    if len(cols) == 1: # when prd is None
       (rid, pred) = (cols[0], '') 
-      print(rid, pred)
     else:
       (rid, pred) = (cols[0], cols[1]) 
     predictionMap[rid] = [splitPuncts(pred.strip().lower())]
