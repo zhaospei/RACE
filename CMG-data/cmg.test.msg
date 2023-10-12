@@ -1,841 +1,61 @@
-enforce xSampling/ySampling==1 in CompositeDeepScanLine (#1209)
-add sanity check for reading multipart files with no parts (#840)
-Fix for #494: validate tile coordinates when doing copyPixels
-Fix logic for 1 pixel high/wide preview images (Fixes #493)
-reduce B44 _tmpBufferSize (was allocating two bytes per byte) (#843)
-Fix #491, issue with part number range check reconstructing chunk offset table
-Fix compile warning introduced in commit c6247a9
-rewind wpa file descriptor when uploading
-Aireplay-ng: Fixed tcp_test stack overflow (Closes #14 on GitHub).
-osdep: Fix possible infinite loop (Closes: #1582).
-OSdep (network): Fixed unitialized variable (CID 1077247).
-Hardcode cpus number to 1 if sysconf call fails.
-Aircrack-ng: Don't enable PTW in WPA dictionary mode. Patch from Len White.
-The returned value is the position into the key variable, on success.
-Fixed use of insecure function warning.
-Airbase-ng: Cast value to float (CID 1309299 and 1309293).
-Fixed potential NULL pointer warning.
-Initialize variable before use.
-Airolib-ng: Fixed resource leak when failing to open a hash DB for import (CID 1386840).
-Buddy-ng: Fixed segmentation fault (Closes #15 on GitHub).
-Mark session loading/saving MT-Unsafe.
-Fixed 384byte keystream output.
-Airodump-ng: Fixed GPS stack overflow (Closes #13 on GitHub).
-wesside-ng: memset data with 0's to ensure null-termination
-Fix loop in blocking read on transport timeout
-Fix for issue #282
-fix type mismatch anywhere int != int32 (Vorne)
-paper bag bug: json_string_set* functions should set the length too
-check max member count in class
-fix in thread.call
-Set max image size to 16384 * 16384
+rhbz: get id of duplicate from correct field
+strbuf::strtrimch() : memmove() reads bytes out of borders
+allow get/set on uninitialized user settings
+wizard: fix save users changes after reviewing dump dir files
+rhbz: die if missing mandatory member
+ureport: wrong description of two functions in ureport.h
+cli: remove superfluous problem_data_free() call
+workflows: add comments to ambiguous functions
+mailx: stop creating dead.letter on mailx failures
+add missing dd_close() to save_dump_dir_from_problem_data()
+ureport: add conversion from abrt vmcore type to ureport KERNELOOPS type
+report-gtk: gtk_scrolled_window_add_with_viewport has been deprecated since gtk-3.7.8
+lib: check frame_size is >= INT32_MAX
+clamp index values to fix index overflow in IMA.cpp
+Actually fail when error occurs in parseFormat
+Always check the number of coefficients
 core: Disallow Methods' registration at run time (.htaccess), they may be
 *) SECURITY: CVE-2015-0228 (cve.mitre.org)
 *) SECURITY: CVE-2015-0253 (cve.mitre.org)
-Fix out of bounds crash on evidence
-Try to fix issue #637
-needed for previous checkin
-fix for #190
-By ITU-T H.265 standard B slice is 0 and P is 1
-fix for #185
-fix for #183
-fix for #184
-fixed possible crashes on malformed inputs.
-fix for #187
-Avoid default-base-is-moof in PIFF format
-fix for #182
-fixed invalid sidx timescale when non default
-Fix wrong keypool internal size in RPC getwalletinfo help
-random: only use getentropy on openbsd
-Add a new checkpoint at block 295,000
-Make accessing mempool parents and children public
-wallet: Add error handling. Check return value of ParseUInt32(...) in ParseHDKeypath(...).
-Fix bad merge: getaccountaddress was broken for new accounts
-ui: Better tab order in send coins entry
-doc: add comment explaining initial header request
-Convert fRescan argument to importprivkey to bool
-only install translator when not empty
-Tighten up bech32::Decode(); add tests.
-irc: #bitcoin is overflowing. split up into 100 randomly-joined channels.
-gui: Show messages as text not html
-Move 'Backup Wallet' to file menu
-Replaces numbered place marker %2 with %1.
-Control mempool persistence using a command line parameter.
-Fix subscript[0] in compressor.cpp
-RPC: strictly require HTTP URI "/"
-Fix Build in GetReservedKey() in wallet.cpp
-Sync bitcoin-tx with tx version policy
-Fix null pointer in IsTrusted()
-Acquire CCheckQueue's lock to avoid race condition
-fix a bug if the min fee is 0 for FeeFilterRounder
-bitcoin-tx: Fix missing range check
-Explicitly set tx.nVersion for the genesis block and mining tests
-allow %d (client number) in trace filename
-osd: pay attention to shard when setting role
-mds: look at active (not projected) inode when issuing truncation
-rgw: make gateway dns name configurable
-add ceph_fsid_set helper
-rgw: fix leaks in certain error paths
-doc: Add usage comment to librbd::RBD::AioCompletion
-os/HashIndex.cc: add asserts to prevent BAD_SHIFT
-rgw: was missing return value
-osd/ReplicatedPG: do not queue NULL dup_op
-mds/SnapServer: use lock safe OSDMap accessors
-mds: pretty json from `tell` commands
-correct error of repeatedly adding io_size to off in do_bench_write
-common/PluginRegistry.h: init Plugin::library in ctor
-rgw: configure user quota also through region map
-os/bluestore/bluestore_tool: output error code correctly if we fail to mkdir
-filestore: do not test xattrs on fsid file
-rgw: access zone.name, zonegroup_name through accessor
-add -f flag for foreground execution of modules (with logs in the log files)
-client: anchor Inode while trimming caps
-FileStore::_collection_move_rename: handle missing dst dir on replay
-msg: MLogAck has a private destructor
-rgw: fix memory leak in func 'RGWCreateBucket_ObjStore_S3::get_params' (#8670)
-rgw: fix lc list failure when shards not be all created
-mon: fix bad return test!
-librbd: cause add_child/remove_child to treat duplicate ops as errors
-mgr: fix OSDMap notifications
-osdc/Objecter: prevent double-invocation of linger op callback
-osd: clear INCONSISTENT if scrub detects no errors
-client: handle (and ignore) MOSDMap
-mon/OSDMonitor: reset OSDMap state before decode
-mon: fix standby-replay assignment (again)
-cls_rbd: fix -EEXIST checking in cls::rbd::image_set
-filestore: free fiemap used for testing fs capabilities
-msg: MMDSMap has a private destructor
-mon: Monitor: drop useless 'todo' comment
-ceph: fix message leaks
-rbd: allow users to remove rbd image when Ceph cluster becomes full.
-os/keyvaluestore: fix valgrind warning on fsid read
-dout: declare dpp using `decltype(auto)` instead of `auto`
-common/shared_cache.hpp: avoid list::size()
-os/bluestore: rename variable in set_lextent
-PG: strays don't peer (only the primary does)
-osd_types: add missing osd op flags
-librbd: fix possible use-after-free
-mon/PGMap.cc: don't output header for pg dump_stuck if nothing stuck
-osd: lock pg in build_past_intervals_parallel()
-objecter: initialize global_op_flags to zero
-osdc: fix pgls_filter op encoding
-rgw: determine owner after effetctive user
-osd: fix failure report handling during ms_handle_connect()
-mds: set dir hash on root inode
-kv/KeyValueDB: pass kv_options map to ctor
-rgw: fix init mdlog sync
-common/perf_counters: allow perfcounters to be excluded from daemonperf
-osd: clear_prior when activating
-xio: fix error from explicit ctor of entity_name_t
-osd: fix uninit value in scrub message
-common: safe_io: handle EOF on read
-rgw: add xml output header in RGWCopyObj_ObjStore_S3 response msg
-PrimaryLogPG::try_lock_for_read: give up if missing
-librbd: don't leak rados_completion
-osd/OSDMap: remove unused static
-rgw: fix subuser key name when purging subuser keys
-rados_create: add id parameter
-rgw: fix returned error code in If-None-Match
-msgr: fail on sd < 0
-ReplicatedPG: CEPH_OSD_OP_WATCH return -ENOENT if !obs.exists
-osd: removed unused RepGather::indata
-tools: Add the ability to reset state to v2
-cls/rbd: fix note
-os/bluestore: fix a typo in SPDK path parsing
-OSDMonitor.cc: fix potential division by zero
-common/config: fix the lock in ConfigProxy::diff()
-msg: async: trim already sent for outcoming_bl more efficiently
-osd: Update object state after removing watch from object info
-os/bluestore: don't dirty onode if its size is already at desired offset
-rgw: update cache interface
-osd: refine SnapContext::is_valid()
-msg: initialize footer
-tools: fix cephfs-data-scan scan_frags vs. nlink
-client: don't hold client_lock around objecter init
-ceph_osd: remove client message cap limit
-auth: fix NULL pointer access when trying to delete CryptoAESKeyHandler instance
-osd: avoid locking multiple pgs at once
-msgr: return error and dethrottle if message decode fails
-osd: avoid extraneous send_boot() calls
-osd/PrimaryLogPG: fix the oi size mismatch with real object size
-osd/PGBackend: Don't change error type from DEEP_ERROR to SHALLOW_ERROR.
-mds: Keep journaler in readonly mode until replay completes.
-client: prefer auth cap in caps_issued_mask()
-add stray_prior_path to store path before rename
-os/newstore: fix race in _txc_aio_submit
-crush: fix signedness warnings
-common: don't do special things for unprivileged daemons
-tools: Don't export temporary objects until we have persistent-temp objects
-rgw: reorder bucket cleanup on bucket overwrite
-librbd: avoid error message when peer owns exclusive lock
-msgr: fix operator<< for sockaddr_in, too
-kclient: reset session cap seq # on reconnect
-misc: use strncpy to prevent buffer overflow
-Optimize website detection differently.
-mon: set a configurable max osd cap
-crush/CrushWrapper: note about get_rule_weight_osd_map limitation
-crush: zero weight items get 0 length straws
-common/ConfUtils.cc: fix potential integer overflow
-osd: fix trailing + in pg state string rendering
-osd/ReplicatedPG: handle COPY_FROM self
-common: fix potential memory leak in HTMLFormatter
-Fix alloc-dealloc mismatch reported by ASan (malloc vs. C++ delete).
-ReplicatedPG::finish_ctx: take excl lock if operation is rw
-rbd-nbd: fix a typo "moudle"
-rados.cc: reduce scope of variable
-mds: update current_parent_since for newly snapshotted directory
-osd/osd_types: add flag name (IGNORE_REDIRECT)
-mon: fix metadata dumps for empty lists
-kclient: fixed dentry lease revocation
-mds: add IFLOCK to wait bits to prevent collisions with lock branch
-common: do not set ioprio if pid is not set
-os/FileStore.cc: use safe_write
-msg: MHeartbeat has a private destructor
-objclass-sdk: use namespace ceph for bufferlist
-mon: update mon(peon)'s down_pending_out when osd up
-mon: drop election messages with bad rank
-osd: fix leaked OSDMap
-mds: choose reasonable state after xlock finishes
-os/Filestore: fix wbthrottle assert.
-librados: calc_snap_set_diff now provides last known object size
-mon/Paxos: adjust trimming defaults up; rename options
-mon: include quorum member names in 'mon stat'
-librados: fix unsigned vs. signed warning
-os/bluestore: fix build error
-osd: drop obsolete 'filestore' bool option
-os/bluestore: pin writing cache buffers until txc is finished
-rbd-mirror: gracefully fail if object map is unavailable
-xio: rename: discard_input_queue -> discard_out_queues
-cls/rgw: fix reshard_list truncation identification
-cls_rgw: fix rgw_bucket_init_index
-mds: cinode: Add a little debugging and fix an output
-rgw: fix modification to index attrs when setting acls
-osd/ReplicatedPG.h: uninit var in ctor RepModify
-PG: clear peering flag when we transition from Peering to Reset
-mds: ESubtreeMap event now uses modern encoding
-mds: zero out the layout in handle_client_setlayout
-crypto: don't hash zero sized buffer
-journaler: uninit var in ctor
-ReplicatedPG: remove useless pcop param from start_copy
-msg: MOSDSubOp has a private destructor
-os/bluestore: fix comment
-mon/OSDMonitor: disallow pg_num changes while CREATING flag is set
-msg/rdma/infiniband: Silence memset warning
-filejournal: use ::encode() wrapper func for Transaction
-mds: fix uninit field in CInode
-mon: Do not allow empty pool names when creating
-os/newstore: do not set/change frag_size if there are overlays
-PGLog::read_log: don't add items past backfill line to missing
-rgw-website: Do not apply retarget for an authenticated request.
-librbd: do not fire flush completions before associated write
-filejournal: initialize header before writing
-Pass the result of PreReleaseRequest to next handler.
-OutputDataSocket: fix uninit var
-mon: crush straw_calc_version value is 0 or 1 not 0 to 2.
-ReplicatedPG::_finish_mark_all_unfound_lost: only requeue if !deleting
-os/bluestore/BlueStore: fix read bug when there is a hole
-rgw/rgw_rest.cc: fix 4K memory leak
-kclient: check for ENAMETOOLONG in lookup
-add rename check_access
-mon: fix potential divide by zero on can_mark_{down,out}
-librbd: disallow creation of v1 image format
-Rgw: check the return value when call fe->run()
-kclient: use FLUSH cap op on cap writeback
-mds: add counter for tracking cap non-responding clients
-msg/async: avoid requeue racing with handle_write
-osd: fix merge_log split point
-rados: fix delete[] in aio_bencher
-kclient: handle case in which splice_dentry fails in fill_trace
-kclient: fix snap_rwsem link on non-existent cap release
-mount.ceph: use ":/" instead of just ":" as ip/path delimiter
-rgw: fix a typo
-rgw: fix s3 list buckets
-rgw: add missing handles for set_resharding, clear_resharding
-OSDMap: reset osd_primary_affinity shared_ptr when deepish_copy_from
-msg: MLog has a private destructor
-librgw: ignore "/" as a common_prefix
-osd: do no index reqid for CLONE ops (or BACKLOG ops)
-rgw: fix for RGWCoroutinesManager::run() return value
-filestore: sync object_map on _set_replay_guard()
-osd/OSD: make dout in _check_full conditional
-auth: delete Exception once it's caught; fixing minor memory leak
-librados: Allow rados_pool_list() to get NULL buffer if len == 0
-include/types: space between number and units
-mds: handle MMonMap
-filestore: fix (part of) wipe_subvol
-osd/osd_types: add object_info_t::FLAG_DIRTY
-journaler: uninit var in ctor
-kclient: initialize some protocol fields
-mds: eval: put scatter in MIX if replicated, otherwise LOCK
-ceph: return error code returned by server
-rgw: introduce rgw::auth::s3::AWS4_HMAC_SHA256_STR to kill magics.
-OSD: lock recovery_wq before debug output on finish_recovery_op
-librados: fix use without NULL check in rados_pool_list
-rgw: fix use-after-free
-PG: set role for replicated even if role != shard
-mon/OSDMonitor : error out if pgp_num > pg_num
-rados: statically allocate time
-kclient: fix NULL dereferencing oops
-mon: initialize vars
-osd/ReplicatedPG: preserve clean/dirty state on clone
-osd: throttle client messages by count, not just by bytes
-fuse: have FUSE enforce permissions
-msg: add type to ceph_entity_addr
-osd/OSD.h: remove twice included OpRequest.h
-msgr: Remove the type CEPH_ENTITY_TYPE_ADMIN.
-osd: fix build_initial_pg_history
-mds: pass change_attr in InodeStat MClientReply, if feature is present
-osd: Reset() the snaptrimmer on shutdown
-rgw: AbortMultipart request returns NoSuchUpload if the meta obj doesn't
-backtrace: fix segfault in tcmalloc.
-client/Client.cc: fix memory leak, free sgids in error case
-mon: fix bug with client id assignment of -1
-msg/Pipe: fix leak of Authorizer
-kclient: setxattr for virtual xattr is not allowed
-osd: set obs.exists in projected object state during recovery
-rgw: bi_list() initialize is_truncated if -ENOENT
-common/options: update for latest added
-rgw: don't handle CORS if rule not found (is NULL)
-msg/async: update to work with dpdk shipped with spdk v17.10
-osd: fix missing.add_event
-rgw: add realms to zonegroupmap
-os/bluestore: fix whitespace in bitset apply helper
-Graylog.cc: use dump_unsigned for pointer dumping
-librbd: properly handle replay of snap remove RPC message
-msg: Fix inconsistent message sequence negotiation during connection reset
-filestore: verify that op_seq is nonzero
-mds: adjust MClientSnaps encoding
-rgw: fix flush_read_list() error msg
-crush/CrushWrapper: fix out of bounds access
-monmap: clear addr_name map on calculating ranks
-mon/MonCap: simplify client.bootstrap-osd
-osd/osd_types: make pref optional in pg_t constructor
-mds: set bad dirfrag's version to 1
-common: update options.cc for master
-ReplicatedPG: reset new_obs and new_snapset in execute_ctx
-osd/NewStore: fix for skipping the overlay in _do_overlay_trim
-rgw: Error check on return of read_line()
-fixed non-root rooted path issue
-ebofs: fix lock recursion
-fragtree_t: fix get_leaves_under()
-osd: avoid polluting peer_info with acting[0]
-mon: OSDMonitor: only output warn/err messages if quotas are set > 0
-include/ceph_hash.cc: reduce scope of a var in ceph_str_hash_rjenkins()
-msgr: fix problem with forced stop of pipe
-mds: fix can_rdlock_soon vs xlock on FileLock
-lockep: fix leak in failure/assert path
-osd: format time nicely in ops_in_flight output
-mds: fix stack overflow caused by nested dispatch
-osd/OSD: drop unused header
-mds: properly free CInode::ValidationContinuation
-config option for mon's DNS SRV records
-client/Client.cc: prefer prefix ++operator for iterators
-client: fix null pointer dereference in Client::unlink
-config: post-process default config options too
-kclient: xattrs, selective rb erasing, fix tree tear down
-objecter: fix writefull
-libcephfs: destroy cmount on ceph_shutdown()
-librbd/internal.cc: close resource leak
-librados: take lock when signaling notify cond
-mon: only propose new osdmap once at end of mdsmonitor tick()
-client: ignore STALE session msg for nwo
-osd: Fix log output in FileJournal::read_entry() coming from do_read_entry()
-PG: don't compare auth with itself
-mon: Elector: clean ack set on election start
-mount.ceph: behave when CONFIG_KEYS is not compiled in
-mon/OSDMonitor: skip new pgs for prime_pg_temp
-librbd: force-remove journal when disabling feature and removing image
-ReplicatedPG: be more careful about calling publish_stats_to_osd() correctly
-mon/OSDMonitor: bypass checks if pg_temp.forced
-os/kstore: assign nid for newly created onode
-rgw: fix the missing return value of init_watch
-mon/PGMap: drop DISK LOG column
-filestore: do not test xattrs on fsid file
-Revert "client: fix warning"
-uclient: Don't *always* set_dentry_wanted() on MClientRequests.
-client: handle reset during initial mds session open
-POSIX/src/common/module.c: do not use strerror_r the GNU way.
-os/bluestore/BlockDevice: debug read result
-mon: Monitor: get required features from monmap
-mds: don't issue leases on dentries in stray dir
-rgw/rgw_rest.cc: fix uninitialized static struct
-osd: fix rare memory leak
-mds: drop auth pins before waiting for dir unfreeze
-mds: shut up about request latency
-librbd: reduce lock scope on copy-on-read IO path
-Event: process event before pop it to avoid releasing
-mds: put pending (not added) caps in reply caps
-set bl length in buffer::read_file
-kclient: only request wanted caps if they aren't already issued
-msg: MDentryLink has a private destructor
-moncaps: fix array out of bounds in parsing
-osd: gracefully exit when create_object_store() returns NULL
-Cleaned up the mon key gen
-msg/asyc/rmda: fix the bug of assert when Infiniband::recv_msg receives
-OSD: disconnect_session_watches obc might not be valid after we relock
-osd: EINVAL when rmw_flags is 0
-crush: update_item() should pass an error back to the caller
-osd: init my_stat
-rbd: disk usage on empty pool no longer returns an error message
-Fix XioLoopbackConnection Lifecycle.
-kclient: debug_addr mount option
-librbd: add create_async_context_callback helper
-crush: add SET_CHOOSELEAF_VARY_R step
-os/bluestore/BlueFS: factor unflushed log into runway calculation
-msg: MClientLease has a private destructor
-rgw: move coroutines out of anonymous namespace
-mon: send mgrdigest promptly to new active mgr
-radosgw-admin: 'period commit' sends to new master zone by default
-os/MemStore: fix use-after-free on iterator
-osd: debug Session refs
-filestore: make stat print correct errno
-rgw: fix printf format warning
+Fix boundary checking error in markup search, that could cause buffer over-read with corrupt input
+Fix: index entry label not being zero-terminated with corrupt input
+fix oob write bug inside libmobi
+Fix potential out-of-buffer read while parsing corrupt file, closes #35, #36
+Fix potential out-of-buffer read while parsing corrupt file, closes #38
+Fix issue with corrupt files with tagvalues_count = 0 that caused null pointer dereference
+Fix wrong boundary checks in inflections parser resulting in stack buffer over-read with corrupt input
+Issue: 15232 AllowScript should use atom::ContentSettingsManager like other Allow* methods in the observer
+Adding 'delete' fixes into fastpath.
+Check file_over_new_connetion to fire for each connection (including the first).
+Restore the --load-seeds cmd-line option
+Patch OOB write in content-line analyzer.
+fix two memory leaks which occured when one used filters.
+Fixing exit-after-terminate when used with bare mode.
+fix potential memleak in x509 parser reported by coverity
+Fix IRC names command parsing
+Remveo stream widgets if not compiled for HTTP support
+MPG123 does not need to map channels...
+Parse some other possible playlists
+Delete counter thread
+Dont show socket filename in description
+Change start element
+- Check saveable state when 'Replace Spaces' is toggled.
+When os thumb moves, use actual slider size when getting value from position
+Recreate context menu when toggle mono icons
+Clear back index on model reset
+Save ID3v2 only for CD encodes
+Fix refreshLibrary logic - Sync is handled as first part of if...
+Check if current is not set
+Use 16pix icons for size<19
+Only empty cache if downloaded an image
+Better url change code
+Use chevron from font awesome
+No delete in menu - when app is maximixed its the first entry!
+Remove duplicate name in tooltip
+Fix windows build
+Only scale for DPI if DPI>120
+Handle pixel formats with odd shift values
 Changed to using carbon module delegate methods
-Disables PanelBrowserTest.MinimizeTwoPanelsWithoutTabbedWindow on
-Roll FFmpeg to pick up security fixes.
-Aura desktop: Fix startup by setting the input method on the root window.
-Fix timing allow check algorithm for service workers
-[pdf] Use a temporary list when unloading pages
-Avoid reparsing an XSLT stylesheet after the first failure.
-Fix SVG crash for v0 distribution into foreignObject.
-Convert DCHECKs to CHECKs for histogram types
-Add bsvc.dll to Chrome's Browser's Blacklist
-Remove DocumentWriter::setDecoder as a grep of WebKit shows no callers
-PopupMenuClient::multiple() should be const
-[XHR] Use response tainting to calculate CORS-exposed header-name list
-Fix issue with pattern parsing in xsltCompilePatternInternal.
-Upgrade a TextIterator ASSERT to a RELEASE_ASSERT as a defensive measure.
-Blink-in-JS should not run micro tasks
-Open Offline Pages in CCT from Downloads Home.
-System Clipboard: Remove extraneous check for bitmap.getPixels()
-Set the default locale for ICU in the PPAPI process.
-2011-07-01 Oliver Hunt <oliver@apple.com>
-Restore old title in WebViewPlugin only when loading the plugin.
-Fix DCHECK in account reconcilor when MultiLogin is enabled.
-Fix PIP window being blank after minimize/show
-Add ThreadChecker for Ozone X11 GPU.
-Restrict the xss audit report URL to same origin
-Workaround for bad driver issue with NVIDIA GeForce 7300 GT on Mac 10.5.
-Remove port 22 from the set of allowed FTP ports.
-[IndexedDB] Fixed transaction use-after-free vuln
-repairs CopyFromCompositingSurface in HighDPI
-Clipboard: Opt out of PNG Encoding filters.
-Fix heap-use-after-free in BookmarksIOFunction::ShowSelectFileDialog.
-Drive out additional flakiness of TouchAction browser test.
-Check that we've got a complete header before accessing its fields.
-For "Dangerous" file type, no user gesture will bypass the download warning.
-Fix HasSingleSecurityOrigin for HLS
-[V8] ASSERT that removeAllDOMObjects() is called only on worker threads
-Strip JavaScript schemas on Linux text drop
-chrome_repack_locales: compress .pak files on Chrome OS
-Disable forwarding tasks to the Blink scheduler
-Disable frame navigations during DocumentLoader detach in FrameLoader::startLoad
-Gracefully deal with clearing content settings for unregistered extensions.
-Added check in page click tracker to ensure events passed in are mouse events
-VisibleSelection::nonBoundaryShadowTreeRootNode should return null when its anchor is a shadow root
-Disable crashing test
-[gtk] un-break status bubble.
-Fixed bug where PlzNavigate CSP in a iframe did not get the inherited CSP
-Tracing: Connect to service on startup
-Use GURL::Replacements to trim query and ref from URL
-When we can't neuter ArrayBuffers, we can't transfer them
-Improve sanitization of remoteFrontendUrl in DevTools
-DocumentThreadableLoader: Add guards for sync notifyFinished() in setResource()
-Revert cross-origin auth prompt blocking.
-Some Scrollbar functions assume an attached ScrollableArea but can be called without one
-Avoid an overflow in harfbuzz-myanmar.c
-media: remove base::SharedMemoryHandle usage in v4l2 encoder
-ime-service: Delete InputEngine.ProcessText.
-Add another instance of a problematic DLL (different location) to the about:conflicts blacklist.
-Fix erroneous semicolon causing build failure: if statement has empty body [-Werror,-Wempty-body]
-Fix dictionary string usage.
-Map U+0454 (є) to 'e' (small E)
-Fix the regression caused by http://crrev.com/c/1288350.
-chrome/browser/ui/webauthn: long domains may cause a line break.
-ozone: fix crash when running video decode unittests.
-Avoid crash when setting rel=stylesheet on <link> in shadow root.
-Use invalidation sets for :read-only and :read-write.
-WebUI: Include cr/ui/grid.js only on ChromeOS.
-GTK: Fix a couple minor popup window icon menu bugs.
-Prefer SyncService over ProfileSyncService in foreign_session_helper
-Allow automatic search engine detection on https
-Revert 124346 - Add basic threaded compositor test to gpu_feature_browsertest.cc
-android: Stop child process in GetTerminationInfo
-Add additional Lao character to IDN confusables
-Fix crash with mismatched vector sizes.
-sync: ensure sync init path doesn't block on CheckTime
-Fix OOB read when parsing protocol-relative URLs
-Relands cl 16982 as it wasn't the cause of the build breakage. Here's
-Crash fix in fileapi::FileSystemOperation::DidGetUsageAndQuotaAndRunTask
-2010-06-18 Adam Barth <abarth@webkit.org>
-Refactoring: Move m_mayDisplaySeamlesslyWithParent down to Document
-Add logging to figure out which IPC we're failing to deserialize in RenderFrame.
-Remove some unused includes in headless/
-Hide the "Open PDF in Reader" bubble on navigations.
-Desist libxml from continuing the parse after a SAX callback has stopped the
-[DevTools] Do not create target handler for restricted sessions
-Fix memory leak in ChooserContextBase::GetGrantedObjects.
-Reland r286968: The CL borrows ShareDialog from Files.app and add it to Gallery.
-Named access checks on DOMWindow miss navigator
-Remove clock resolution page load histograms.
-Linux: Fix crash reporting for GPU and plugin processes.
-Enforce form-action CSP even when form.target is present.
-Set Attr.ownerDocument in Element#setAttributeNode()
-AppCache: Use WeakPtr<> to fix a potential uaf bug.
-Fix a small leak in FileUtilProxy
-Fix XPointer bug.
-Change Document::detach() to RELEASE_ASSERT all subframes are gone.
-Fix clobbered build issue.
-Pull follow-up tweak from upstream.
-Include U+0517 in set of Cyrillic/Latin lookalikes.
-Fix a crash in HTMLFormElement::prepareForSubmission.
-Block modifier-letter-voicing character from domain names
-rm flag and rebaseline
-During redirects in the one click sign in flow, check the current URL
-Fix null-termination on string copy in debug-on-start code.
-Check CSP before registering ServiceWorkers
-Coverity: Add a missing NULL check.
-[md-settings] Clarify Password Saving and Autofill Toggles
-Fix gcc warning
-[content shell] reset the CWD after each layout test
-Speculative fix for crashes in HTMLImportsController::Dispose().
-Always call UpdateCompositedScrollOffset, not just for the root layer
-Fix uninitialized access in QuicConnectionHelperTest
-Quota double-delete fix
-[skia] not all convex paths are convex, so recompute convexity for the problematic ones
-service worker: Disable interception when OBJECT/EMBED uses ImageLoader.
-Fix compile warning.
-Rename MostVisitedSites.MostVisitedURLsObserver to Observer.
-[Android][TouchToFill] Use FindPasswordInfoForElement for triggering
-autofocus: Fix a crash with an autofocus element in a document without browsing context.
-Source/WebCore: Fix for bug 64046 - Wrong image height in absolutely positioned div in
-Do not forward resource timing to parent frame after back-forward navigation
-Add Virtual Keyboard bordered key experiment to chrome flag
-Fix nullptr crash in IsSiteMuted
-Fix mismanagement in handling of temporary scanline for vertical flip.
-XSSAuditor takes post body from current request, not the original request.
-Disable crashing OfflineLoadPageTest
-Rewrite getUseMedia calls to use promises.
-Properly EscapeForHTML potentially malicious input from X.509 certificates.
-Prevent extensions from defining homepages with schemes other than valid web extents.
-[LayoutNG] A few small cleanups in flex code
-Clean up CanvasResourceDispatcher on finalizer
-Use correct context when throwing an exception
-Add a check to prevent len from going negative in xmlParseAttValueComplex.
-GetFileHandleForProcess should check for INVALID_HANDLE_VALUE
-Avoid drawing SVG image content when the image is of zero size.
-Disable compositor thread input handling on windows
-Fix null deref when walking cert chain.
-Handle CBF_SMBITMAP in the async version of the IPC.
-Web Animations: Temporary fix for performance regression in transition tests
-return early from ProcessRawBytesWithSeperators() when data length is 0
-Use base::size rather than arraysize in third_party/zlib/.
-ReadableStreamBytesConsumer should check read results
-Add CHECKs for file descriptors used in select() by InotifyReaderTask
-Prevent regular mode session startup pref type turning to default.
-[DevTools] Guard DOM.setFileInputFiles under MayAffectLocalFiles
-Take default system font size from PlatformFont
-Add permission checks for PPB_Buffer.
-Add ASSERT() to avoid accidental leaking ServiceWorkerContainer to cross origin context.
-Make WebContentsDelegate::OpenColorChooser return NULL on failure
-Add keepalive support to drivefs API
-Reload frame in V8Window::namedPropertyGetterCustom after js call
-Use an opaque URL rather than an empty URL for request's site for cookies.
-media/gpu/test: ImageProcessorClient: Use bytes for width and height in libyuv::CopyPlane()
-Convert MediaTrackConstraints to a ScriptValue
-OomIntervention opt-out should work properly with 'show original'
-Check the content setting type is valid.
-Add support for horizontal mouse wheel messages in Windows Desktop Aura.
-Fixing Coverity bugs (DEAD_CODE and PASS_BY_VALUE)
-Fix the |name| of PerformanceNavigationTiming
-[SVG] Handle non-SVGAnimateElement results in calculateAnimatedValue()
-Move user activation check to RemoteFrame::Navigate's callers.
-Enable ManifestTest.AppLaunchContainer as it should be passing now.
-Fix crash in RunInfo::NumGraphemes
-Don't retain reference to ChromeGeolocationPermissionContext
-2008-03-25 Antti Koivisto <antti@apple.com>
-Delete apparently unused geolocation declarations and include.
-Add trace event to sync_sessions::OnReadAllMetadata()
-Validate frame after conversion in chrome.send
-Use display_email() for Uber Tray messages.
-Revert 225538 "Leaking locale changes is a Very Bad Idea."
-Block Avast! AV DLLs in sandboxed processes.
-Inherit referrer and policy when creating a nested browsing context
-Fix integer overflow in Windows shared memory handling.
-De-flake and re-enable a chrome.searchEnginesPrivate api test.
-Fix a lock re-entry bug in GpuDataManager::UpdateGpuInfo.
-Fix a Windows crash bug with javascript alerts from extension popups.
-Copy visible_pages_ when iterating over it.
-Make NotifyHeadersComplete the last call in the function.
-Handle a bad XSLT expression better.
-Removing unnecessary DCHECK from SafeBrowsing interstitial.
-Fix crash if utterance is garbage-collected before speech ends.
-Shutdown Timebomb - In canary, get a callstack if it takes longer than
-Let PDFium handle event when there is not yet a visible page.
-Explicitly stopping thread in MediaStreamImpl dtor to avoid any racing issues.
-Remove possibility of stale user_buffer_ member in PPB_URLLoader_Impl when FinishedLoading() is called.
-Refcount AppCacheGroup correctly.
-Remove WeakPtrFactory from PasswordAutofillAgent
-Tests were marked as Flaky.
-Consider scroll-padding when determining scroll anchor node
-Build fix following bug #30696.
-Don't move the window when resizing
-2009-05-04 Kai Brüning <kai@granus.net>
-Define DEBUG_GL_COMMANDS only in debug builds.
-Fix use-after-free in FileReaderLoader.
-Roll src/third_party/boringssl/src 664e99a64..696c13bd6
-Block dotless-i / j + a combining mark
-[Mac] Fix Fullscreen Spoofing Issue on 10.13
-Fix crash in CreateAuthenticatorFactory().
-Fixed crash related to cellular network payment plan retreival.
-Add Android SDK version to crash reports.
-[Fetch API] Fix redirect leak on "no-cors" requests
-Be a little more careful whether something is an URL or a file path.
-Unreviewed, rolling out r147402.
-Break path whereby AssociatedURLLoader::~AssociatedURLLoader() is re-entered on top of itself.
-Fix wrapping behavior of description text in omnibox suggestion
-Form validation: Do not show validation bubble if the page is invisible.
-[DevTools] Use no-referrer for DevTools links
-[BlackBerry] willComposite() and didComposite() are now in InspectorController
-Create array of extension views without side effects
-Disable WebUIBidiCheckerBrowserTestRTL.TestSettingsFramePasswords for being flaky on all platforms.
-Block Tifinagh + Latin mix
-Fix crash due to unexpected Node deletion during MutationObserver registration book-keeping
-PermissionUtil::GetPermissionType needs to handle MIDI
-Add extra checks to avoid integer overflow.
-Fix one implicit 64-bit -> 32-bit implicit conversion in a PPAPI test.
-[EFL] fast/frames/frame-crash-with-page-cache.html is crashing
-Add .desktop file to download_file_types.asciipb
-base/i18n: Remove unneeded includes in case_conversion.*
-[FileSystem] Harden against overflows of OperationID a bit better.
-Allocate a FrameSinkId for RenderWidgetHostViewAura in mus+ash
-fix incorrect TexImage3D params w/ UNPACK_IMAGE_HEIGHT
-Track -webkit property usage.
-2009-04-04 Simon Fraser <simon.fraser@apple.com>
-Fix uninitialized variables in HarfBuzzShaperBase
-Add bounds validation to AsyncPixelTransfersCompletedQuery::End
-bindings: Support "attribute FrozenArray<T>?"
-Guard against the same PrintWebViewHelper being re-entered.
-Fix GPU process fallback logic.
-Use the lock when accessing the buffer object.
-Ignore filtered event if an event matcher cannot be added.
-Add feature and flag to enable incognito Chrome Custom Tabs
-Fix HistoryEntry corruption when commit isn't for provisional entry.
-Fix crash with unexpected DTD nodes in XSLT.
-Setting input.x-webkit-speech should not cause focus change
-Cleanups in ScreenOrientationDispatcherHost.
-Remove use of SEE_MASK_FLAG_NO_UI from Chrome Windows installer.
-Always use FrameNavigationDisabler during DocumentLoader detach.
-2009-10-23 Chris Evans <cevans@chromium.org>
-[pdf] Defer page unloading in JS callback.
-Don't touch the prototype chain to get the private script controller.
-Don't force callers to be ASCII (when some of them already aren't).
-Explicitly enforce values size in feColorMatrix.
-[OriginChip] Re-enable the chip as necessary when switching tabs.
-Suspend shared timers while blockingly closing databases
-[wasm] Use correct bindings APIs
-chrome.bluetoothSocket: Fix regression in send()
-omnibox: experiment with restoring placeholder when caret shows
-parserInsertBefore: Bail out if the parent no longer contains the child.
-Fix libxml XPath bug.
-Fix crash when resizing a view destroys the render tree
-gpu: Disallow use of IOSurfaces for half-float format with swiftshader.
-Add DCHECK to ensure IndexedDBDispatcher doesn't get re-created.
-Move ImageLoader timer to frame-specific TaskRunnerTimer.
-Unittest fix. Need to put usersubmitted = true for unittests.
-[MediaStream] Pass request ID parameters in the right order for OpenDevice()
-Fix indents. I am used to webkit style, so did it wrong in last commit.
-[IndexedDB] Fix Cursor UAF
-Fix crash happens when VK tray is clicked after VK is disabled.
-Replace further questionable HashMap::add usages in bindings
-Fix eliding, truncation issues with hostnames in security information dialog for windows, linux platforms resp.
-Don't forget the ffmpeg input buffer padding when allocating a codec's
-Check for a negative integer properly.
-Disable OutOfProcessPPAPITest.VarDeprecated on Mac due to timeouts.
-Infobar Windows Media Player plug-in by default.
-cleanup: Use IsTextInputTypeNone() in OnInputMethodChanged().
-Content Shell: Move shell_layout_tests_android into layout_tests/.
-Give the media context an ftp job factory; prevent a browser crash.
-sync: remove Chrome OS specific logic to deal with flimflam shutdown / sync race.
-Fix memory leak in webRequest API in case of invalid parameters
-Pull entity fix from upstream.
-Fixed brekage when PureViews are enable but Desktop is not
-omnibox: Remove unregistered NOTIFICATION_BOOKMARK_MODEL_LOADED from action_box test.
-Always initialize |m_totalWidth| in HarfBuzzShaper::shape.
-crazy linker: Alter search for zip EOCD start
-cc: Simplify raster task completion notification logic
-Disable AutofillInteractiveTest.OnChangeAfterAutofill test.
-Only access a plugin's scriptable object, and not also its prototype chain
-Removing dead code from NetworkActionPredictor.
-Don't report OnFirstSurfaceActivation for ui::Compositor
-Disable ash configuring display when running mash.
-Don't offer to translate the devtools.
-Remove an unused variable.
-Remove false assertion in ApplyBlockElementCommand::formatSelection()
-Don't change Document load progress in any page dismissal events.
-ash: Fix right-alignment of power-status text.
-[scheduler] Remove implicit fallthrough in switch
-Clear |composing_text_| after CommitText() is called.
-Use correct Request Context when EMBED or OBJECT requests an image
-Check that RWHI isn't deleted manually while owned by a scoped_ptr in RVHI
-AppCache: fix a browser crashing bug that can happen during updates.
-Search the entire subtree when looking for the end of an inline continuation chain.
-Fix harmless memory error in generate-id.
-Fix crash when creating an ImageBitmap from an invalid canvas
-Fix integer overflow in software compositor
-Fix an optimisation in ContainerNode::notifyNodeInsertedInternal
-Fix detached Attr nodes interaction with NodeIterator
-Disable SSLUITest.TestCNInvalidStickiness, flakily hits an assertion.
-[EFL] Change the behavior of ewk_view_scale_set.
-Cleanup after transition to new attestation dbus methods.
-Apply 'x-content-type-options' check to dynamically inserted script.
-Enforce SVG image security rules
-Disable FileSystemManager::CreateWriter if WritableFiles isn't enabled.
-Notify nodes removal to Range/Selection after dispatching blur and mutation event
-[FileAPI] Clean up WebFileSystemImpl before Blink shutdown
-Fix print media page size by using the value we compute.
-Fix icon returned for HQP matches; the two icons were reversed.
-Auto-dismiss http auth dialogs on navigation for Android.
-SVG: Moving animating <svg> to other iframe should not crash.
-Check context is attached before creating MediaRecorder
-Progressive JPEG outputScanlines() calls should handle failure
-[BlackBerry] Prevent text selection inside Colour and Date/Time input fields
-Now ignores obsolete sync nodes without visit transitions.
-Verify that header values set from Blink don't contain '\n'.
-[Blink>Media] Allow autoplay muted on Android by default
-Remove SpeechSynthesis runtime flag (status=stable)
-Simplify WebGL error message
-One polymer_config.js to rule them all.
-Revert "[Picture in Picture] Call parent function in OnGestureEvent."
-Turn a bunch of ASSERTs into graceful failures when compiling listeners
-Fix uninitialized member in ctor.
-CSP: Strip the fragment from reported URLs.
-Fix memory error in previous CL.
-SandboxedExtensionUnpacker::ValidateSignature should check for an empty signature
-Added connection-specific conn_data pointer to struct mg_request_info
-Temporary fix for #244 is not required if #225 is applied
-Clean after merge
-Corrected misplaced brackets in parse_http_message()
-Try to fix sporadic communication problems in CI tests for windows by retrying on SSL_ERROR_ZERO_RETURN
-fix OpenSSL 1.0 support
-Forcing connection close when client disconnects.
-extra check in mg_start(): options may be NULL
-Allow NULL passwords in mg_modify_passwords_file
-Fix yet another 32 bit warning (#496)
-in pull_all() and read_request(), respect ctx->stop_flag()
-Removed obsolete manual reference
-Reqrite request parsing (Step 12/?)
-Check length of memcmp
-Corrected check for websocket connection close
-It is indeed possible for SSL_write to fail with SSL_ERROR_WANT_READ.
-Add header for uname
-mg_get_ports to return number of elements of ports and ssl filled in
-Prevent sign conversion
-Initialize all struct timespec and struct timeval with memset
-Fix typo in variable name
-Fix: upstart: Correct ddfa810 - Perform more parts of monitor operations without blocking
-Dev: crmd: fix typo
-Fix: crmd: Improved continue/wait logic in do_dc_join_finalize()
-A new command to simulate failure in the CRM (only works if the CRM was
-High: PE: Parse fail-count correctly (it may be set to ININFITY)
-Fix: memory leak found by valgrind was corrected.
-Low: controller: filter certain synthesized failures from CIB
-LRM plugins: skip dot-files.
-Medium: fencing: Log the command-line of any (un)fence actions
-High: ipc: Prevent use-of-NULL when destroying an non-existant IPC server
-Low: PE: Improve startup logging
-Put our CIB into slave mode on exit
-High: Tools: Fix use-after-free defect from coverity
-Dont accept a DC that has since quit.
-Fix: crmd: 0 is a valid fd
-Fix: pengine: remove unnecessary whitespace from notify environment variables
-Low: tools: crm_simulate - fix small xpath memory leak in inject_node_state()
-Build: Fix for -Werror build (s/g_main_new/g_main_loop_new/)
-heartbeat: Fix a variable name
-Medium: crmd: Allow up to 5 retires when an attrd update fails
-Fix: PE: Memory leak when updating cancel operations
-High: pengine: Force record pending for migrate_to actions
-Low: fencing: wider use of defined literals
-cib: Memory leak - Free query matches in update_attr()
-Feature: cib: Allow multiple children to be removed from the object root (eg. constraints)
-Med: fix xml.c memleak in "missing upgrade XSLT" case
-Fix: fencing: memory leak when searching for a target's fencing topology
-This should not be required now that the DC signs up to itself
-Fix: crmd: Suppress secondary errors when no metadata is found
-Medium: ais: Avoid double-free in error path
-crmd: Memory leak - Clean up the XML result of the LRM queries
-Fix: libcluster: work around peer cache destruction in client status callbacks
-Filter out some TE actions
-Transition key needs to be supplied - related to previous sorting assert
-High: libcrmcommon: fix CVE-2016-7035 (improper IPC guarding)
-Fix: PE: Skip unrunnable actions when one-or-more is in effect
-Low: PE: Use action id's that wont cause conflicts when we invert the ordering constraint
-Fix a election calculation
-Remove redundant code
-Fix: systemd: Ensure we don't call dbus_message_unref() with NULL
-TE: Detect changes to attributes of the cib object
-Unpack parameters for new resources correctly
-High: Core: Ensure there is sufficient space for EOS when building short-form option strings
-Medium: PE: Resolve memory leak in new ordering code reported by valgrind
-Fix: cib: Validate clients are correctly applying v2-style diffs at most once a minute
-Low: ais: Warn if valgrind is requested but not available
-Refactor: libpe_status: define constant for #ra-version attribute
-Fix: TE: don't bump counters when action or synapse is invalid
-High: fencing: Stop the IPC servers on clean disconnect
-decrease the repeating of the same log
-Fix: acl: Do not delay evaluation of added nodes in some situations
-High: cib: Fix huge memory leak affecting heartbeat-based clusters
-Fixing to NOT have inline variable declaration.
-Refactor: tools: don't reinvent the glib wheel
-Refactor: tools: ensure crm_resource data set is initialized
-Fix: stonith-ng: Trigger on constraints added to cib
-Medium: ais: Use the node's uname and send out membership updates
-High: Core: Correctly determine when an XML file should be decompressed
-Low: Core: Obtain more information when someone tries to parse an empty string as xml
-Medium: ipc: Do not wait when trying to read Events
-High: crmd: Always send a direct ack as the TE doesn't see delete's
-High: crmd: Make sure async-failures cause the failcount to be incrimented
-crmd: Provide useful feedback when the metadata is unreadable
-High: cib: Fix the feature set check
-High: PE: Fix memory leak on processing message (bnc#780224)
-Medium: IPC: Handle another common error code from qb_ipcs_event_sendv()
-Dev: Tools: attrd - Fix value++ expansion
-High: PE: Bug lf#2518 - Avoid spamming the logs with errors for orphan resources
-Low: fencing: stonith -l option for custom log
-Fix: fencing: Clean up memory at exit
-Low: PE: Log formatting
-Memory leak fixes from Kevin Jamieson
-If we matched the search root, keep searching just in case another copy exists
-crmd: crm_str_ -> safe_str_
-TE: Always exit via mainloop
-Provider is not manditory
-Fix: attrd: don't leak memory when returning due to malformed update request
-Low: tools: avoid memory leak when crm_resource checks resource
-Dev: PE: Downgrade developmental logging
-Medium: crmd: Check we are present in the membership table _and_ active
-Low: execd: avoid memory leak when testing remote key
-Fix: xml: Prevent use-after-free of ID values
-Fix: xml: Resolve memory leak when logging xml blobs
-High: Core: More compile fixes for when libqb is not available
-Fix: crm_resource: Prevent use-after-free
-Build: xml: INFINITY could overflow for 16-bit ints - explicitly cast it
-PE: Remove erroneous if-clause
-Med: schemas.c: avoid downgrade validate-with in a corner case
-PE: Prevent a potential use of NULL
-High: PE: Bug N:396293 - Enforce manditory group restarts due to ordering constraints
-Low: tools: crm_mon - resolve coverity UNINIT error
-Medium: PE: Only complain about mis-matched values of clone_node_max is interleaving was requested
-Dont die if someone passes in an empty update
-CRM: Put something in the if-block
-High: cib: Correctly free memory when writing out the cib to disk
-Low: crmd: Fixes assert failure on shutdown
-Add in break
-Low: Admin: crm_standby - Don't complain abot missing values, print the default value instead
-Low: Tools: Add help text
-Log: cib: reword trace message
-Fix: xml: Log comments as well
-The behaviour of this is now understood.
-Fix: PE: Prevent use-after-free when creating bundle constraints
 Call poll_destroy when executing ais_done. This increases code
 Free state variable allocated in wd_resource_state_is_ok
 Stop the totem stats updater timer during shutdown to prevent references to
@@ -864,21 +84,80 @@ set serialize lock to proper function.
 Port of totemip to Solaris.
 mutex bug fixes as reported by Kristen Smith.
 Patch to log security warnings when invalid identifier is used in message
+Added raptor_new_identifier_from_double pointer
+Reintroduced RAPTOR_V2_AVAILABLE flag so that library users can support both raptor1 and raptor2.
+(raptor_rss10_serialize_statement): Ignore any triple with predicate
+(raptor_start_element_grammar): Disable XML declaration when building
+(raptor_check_ordinal): unsigned char *name
+(raptor_rdfxml_comment_handler): Do nothing when a comment is given
+struct raptor_parser_s gains field graph_handler
+(raptor_rdfxmla_serialize_statement) Lowmem fixes. Return raptor_abbrev_subject_add_property() errors to caller.
+(raptor_sequence_ensure): Use void** not void*. C++ cares.
+Added finish_factory factory cleanup method.
+Calcualte max nspace declarations correctly for XML writer
+(raptor_rss10_emit_item): Handle atom:summary XML content
+(raptor_stringbuffer_append_turtle_string) Check for alloc failure.
+Revert: (raptor_abbrev_subject_find): Remove double free of lookup_node
+(main): Free returned uri
+(raptor_rss10_build_items): Skip triples that have no URI value.
+(end_element): Protect for NULL xml_literal before strlen [clang]
+make rdfguess work
+(raptor_valid_xml_ID, raptor_xml_escape_string): unsigned long for
+(raptor_new_sax2): Save correct libxml error handlers
+(raptor_new_namespace_from_uri): memcpy replacing strcpy
+(main): Add test to confirm report from
+(raptor_rdfxmla_serialize_set_xml_writer): Free any namespaces
+(rdfa_resolve_curie): Protect NULL uri lookup [clang]
+casts for RAPTOR_*ALLOC returns
+(raptor_namespaces_find_namespace): Be resilient to NULL or empty stack.
+Added prototypes for raptor_xml_writer_newline
+(raptor_grddl_parser_add_parent): Do not set parent twice
+(raptor_new_term_from_literal): Remove language used with typed literal and generate warning
+Use raptor_free_statement() to clear static statement.
+Add error for failure of raptor_uri_filename_to_uri_string
+(raptor_rdfxmla_emit_subject_properties): Do not throw away return value from raptor_rdfxmla_emit_subject_list_items().
+(raptor_rdfxml_serialize_statement): Fail to split predicate if
+Casts for returning unicode char lengths
+(raptor_free_statement): Free predicate URIs that were
 Fixed memory leak when an invalid timezone was found
-Fixed crash when st_info_list is NULL. Fixes #420. Fixes CVE-2022-4121.
-address: fix buffer overflow
-Avoid listening on all interfaces by default
-Surport mxnet train distributed on Kubernetes
 Do not allow enters/returns in arguments (thanks to Fabio Carretto)
 Fixed possible SQL Injection Vulnerability (Thanks to Fabio Carretto!)
 dracut-install: handle more ldd errors
 Fix memory leak
+Fix memory leak. SF_CART_INFO_16K struct was not being de-allocated.
+src/wav.c: Fix exif parser bug
+src/aiff.c : Validate channel count.
+src/mpc2k.c : Fix valgrind warning.
+src/file_io.c : Prevent potential divide-by-zero.
+src/flac.c : Fix seeking to offset 0 from end of file.
+Make sure 23 bit PCM SD2 files are readable/writeable.
+src/wavlike.c: Prevent infinite loop on malformed file
+src/flac.c: Improve error handling/reporting
+src/sd2.c : Fix two potential buffer read overflows.
+src/pcm.c : Improve error reporting.
+src/flac.c: Fix a buffer read overflow
+src/id3.c : Improve error handling
+src/aiff.c: Fix a buffer read overflow
+Fix backward branching in SwitchImm.
+Handle typeof applied to empty in InstSimplify
+Re-sync with internal repository (#791)
+Added stack overflow check for hermes::vm:: hermesBuiltinApply
+Fix a bug in transient object property assignment and getUTF16Ref
+Treat usages of arguments.callee as unknown callsites
 Enforce a limit on value bytes size
-fixed invalid memory reads detected by the address sanitizer
-EAP-pwd: fix side-channel leak where 1 in 2018 handshakes fail
-Use "length", which has been limited in size
-decode_entities confused by trailing incomplete entity
-We did copy from the wrong place.
+AcceptRoutingHandler should not assume a folly::AsyncSocket
+add transition helper to format.h
+Silence MSVC 2017 constant if expression warning
+%.f should have zero precision, not default precision
+Win32 doesn't have _BitScanForward64 so emulate it with two 32 bit calls.
+Fix MSVC build
+Fix the build.
+Fix segfault on complex pointer formatting (#642)
+Fix handling of unsigned char strings (#373)
+Suppress a bogus coverity warning
+Fix linker errors using fmt as shared library in MSVC
+add assert for addition overflow on queue creation (#225)
+Add addition overflow check for stream buffer (#226)
 verify_lock(): do not capitalize error messages
 diff: switch GIT_SHA1_HEXSZ to use the_hash_algo
 http.c: Remove bad free of static block
@@ -1006,89 +285,53 @@ Fix handle leak in sha1_file/unpack_objects if there were damaged object data
 xmkstemp(): avoid showing truncated template more carefully
 get_cwd_relative(): do not misinterpret root path
 diff.c: --no-color to defeat diff.color configuration.
-app: finish porting GdkScreen/monitor_number to GdkMonitor
-app: typo: make string translatable
-Bug 595605 - memory leaks in plug-ins/common/curve-bend.c
-app: fix modifiers being stuck in transform tools
-app: add +gimp_container_freeze_count() which returns the freeze_count
-Bug 730071 - Selection bounds miscalculated for multiples of 128
-Use gtk_widget_get_window() instead of widget->window
-app: keep GimpCanvasItem from emitting "update" during destruction
-app: update `gimp-xcf-save` procedure documentation.
-Bug 791514 - Cannot export to webp file.
-app: add a GimpCanvasProxyGroup that will be used for guides
-Make the preview column the expander column
-app: disable parallel asynchronous operations when GEGL_THREADS=1
-Bug 666065 - "you can drop dockable dialog" of the toolbox
-file-gif-load: fix type overflow (CVE-2012-3481)
-plug-ins/common/align_layers.c app/gui/image-menu.c plug-ins/fp/fp.c
-When an item is removed, emit "removed" on all its children
-Revert "Bug 610587 - Zooming with zoom tool pans away from the cursor"
-app: remove checks for grab time consistency
-Bug 663582 - Brush outline is too slow
-Corrected the last line.
-app: don't leak the GtkTextBuffers of Gegl multiline text properties
-app: silence a harmless critical warning
-app: fix area-based scale_limits in gimp_prop_widget_new_from_pspec()
-app: fix crash in GEGL tool when an operation specific tool was used before
-Bug 645120 - Disable color tools overlay dialogs
-app: clear current path from the context after copying it
-Revert "app: initialize GEGL after showing the splash"
-app: update "horizontal/vertical guide position" labels.
-app: even for fallback icons, it is better to check lookup success.
-Random doc fix
-Enable "layers-resize" for group layers
-app: initialize variable in gimp_histogram_view_update_bins()
-app: set an icon on the floating selection filter
-add func. ref for os2
-Bug 789436 - Fix out of boundary write in file-xmc.c.
-app: add a tooltip to the color temperature preset menu button
-Use GtkSelectionData's accessors
-app: fix rectangle select tool cursor after committing/halting
-app: use actual render area when processing display filters
-app: fix crashing typo in previous commit
-Bug 701120: Opening fuzzed .pnm-file causes stack buffer overflow
-Bug 493778 – metadata plug-in crashes on some images
-app: make LCH lightness select-criterion faster
-app: skip keyboard devices so the device list becomes reasonable
-libgimp: disable tile command range check in plug-in tile backend
-Proofreading: spacing, grammar
-Issue #1689: create unique temporary file with g_file_open_tmp().
-app: really really destroy the tool options widgets this time
-plug-ins: Use string literal as format in metadata plug-in
-app: use ICON_ONLY layout for group combo in GimpLayerModeBox
-plug memory leak: Fixes #305990
-Bug 784462 - Export in C source format reports wrong BPP/buffer-size ...
-app: prevent warnings in gimp_levels_tool_config_notify()
-app: make GimpImageMap work again when there is no selection
-app/core: do not offset cairo_path_data_t's headers
-Fix variable used uninitialized warnings.
-plug-ins: fix memory leak in edge-neon
-app: avoid id. matrix short-circuit in trans. tool when ...
-Bug 686379: In the JPEG save dialog, checking/unchecking XMP...
-app: clear gimp_image_merge_layers()'s merged layer with gegl_buffer_clear()
-fixed off-by-one error that caused segfaults on images with a width of
-Fix a width/height confusion in the healing tool algorithm
-libgimpconfig: support $(gimp_installation_dir) in config paths
-app: add support for drawing guide lines with cairo
+st_theme_node_copy_cached_paint_state: allow self-assignment
+ShellContactSystem: fix GSList of utf8 leak
+browser-plugin: Set that we need XEmbed
+[ShellApp] Signal windows-changed when removing a window
+StDrawingArea: fix texture drawing
+Fix up a11y settings handling
+Revert "browser-plugin: Set windowless mode and don't claim to need XEmbed"
+shell-doc-system: fix %-escaping code in shell_doc_system_open()
+recorder: Don't compute the buffer size twice
+Fix prototype for shell_app_monitor_get_window_app
+st-box-layout: Don't report a paint volume when we have no allocation
+window-tracker: Fix memory leak
+plugin: Use the clutter xdisplay for has_swap_events
+shell-global: Use G_VARIANT_TYPE macro for checking
+theme-node-drawing: don't crash if st_theme_node_paint() is called on an empty area
+StThemeNodeDrawing: Remove useless LoadCornerData
+shell-screenshot: Avoid a crash when the cursor texture is NULL
+ShellApp: Use global time, not clutter time
 Make it compile, even.
 tar: fix crash on broken tar file.
-Fix vulnerability in enc_untrusted_recvfrom
-Check output of ecall_restore is outside enclave
-Store untrusted output pointer in enclave
-Check for result of recvfrom
-Check for result size in dst in inet_ntop
-Verify UntrustedCall output is outside enclave
-Check sockaddr size in inet_pton
-Add sysno check in MessageReader
-Check untrusted queue is in outside enclave
-Fix vulnerability in UntrustedCacheMalloc
-Check for return size in enc_untrusted_read
-Check input length in FromLinuxSockAddr
-Check for output_len range in ecall_restore
-Store untrusted input to enclave variable
-Check return pointer is outside enclave in realloc
-Check return result in recvmsg
+Initialise GString member to NULL
+gitlab#179 - rsvg_filter_primitive_free(): Check the GStrings for NULL before freeing them
+rsvg_characters_impl(): Unref the chars node we just created
+fix memory leak.
+rsvg-filter: Don't overrun an array when given invalid inputs
+Use gobject instance private data
+Fix two leaks of states in the filters that need to reconstruct
+bgo#748608 - Destroy cairo_t after use
+free ptr_array data
+Small code cleanup on previous patch
+Fix xmllint --xpath node initialization
+Fix handling of apos in URIs
+Fix undefined behavior in xmlRegExecPushStringInternal
+Convert C14N to the new Input buffer
+Fix a couple of warnings in dict.c and threads.c
+Fix xmlParseInNodeContext() if node is not element
+Silence a clang warning
+applied Gennady's patch against buffer overrun
+Detect infinite recursion in parameter entities
+Fix compiler warning in htmlParseElementInternal
+Avoid extra processing of MarkupDecl when EOF
+Fix a crash with xmllint --path on empty results
+Leak of struct addrinfo in xmlNanoFTPConnect()
+Set memory limit for LZMA decompression
+Recognize ID attribute in HTML without DOCTYPE
+Reset parser input pointers on encoding failure
+Fix various bugs found by OSS-Fuze.
 fixed #1769 (fuzz)
 fixed #1785 (fuzz)
 Fixed bug in YUV scaling
@@ -1169,75 +412,24 @@ Fixed stream descriptions
 fixed #1783 (fuzz)
 Fixed bug in image loader
 End OSC8 hyperlink on invalid embedded escape sequence.
-Use the correct rights.
-Fixed SEGV reported in https://github.com/ImageMagick/ImageMagick/issues/130
-Forgot to factor in softness
-Added check to prevent image being 0x0 (reported in #489).
-RLE check for pixel offset less than 0 (heap overflow report from Craig Young)
-Don't overflow pixel buffer
-Avoid overflow when parsing PSD resource blocks
-Correct overall entropy calculation
-Added check for bit depth 1.
-another small bug fix
-Reset memory for RLE decoder (patch provided by scarybeasts)
-fix memory leak in ReadYCBCRImage as SetImageExtent failure
-Ignore user supplied layer mask.
-Fixed possible memory leak reported in #1206
-Fixed check for the number of pixels that will be allocated.
-squash heap-buffer-overflow, PoC TIFF from Hardik
-Moved check for https://github.com/ImageMagick/ImageMagick/issues/92.
-Added missing policy checks in RegisterStaticModules.
-Fixed memory leak reported in #456.
-Corrected location of where the mask is drawn.
-Added missing comma reported in #149.
-Restored call to RelinquishMagickResource.
-Fixed memory leak.
-Fixed new bug due to a typo in the PNG00 fix
-Added extra check to fix https://github.com/ImageMagick/ImageMagick/issues/93
-Prevent buffer overflow in BMP coder (bug report from pwchen of tencent).
-Fixed incorrect call to DestroyImage reported in #491.
-Prevent memory use after free
-Add additional checks to DCM reader to prevent data-driven faults (bug report from Hanno Böck
-Fixed head buffer overflow reported in: https://github.com/ImageMagick/ImageMagick/issues/98
-Improve buffer overflow sanity check
-Fixed incorrect change of the alpha channel in ImportQuantumPixels when the alpha type is DisassociatedQuantumAlpha.
-possible TIFF related-heap buffer overflow (alert & POC by Hardik Shah)
-Fix TIFF divide by zero (bug report from Donghai Zhu)
-Fixed potential memory leak.
-Fixed check that determines if enough bytes are read (https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=7502).
-Evaluate lazy pixel cache morphology to prevent buffer overflow (bug report from Ibrahim M. El-Sayed)
-Prevent buffer overflow in BMP & SGI coders (bug report from pwchen&rayzhong of tencent)
-Fixed out of bounds error in SpliceImage.
-Added missing null check reported in #817.
-Added check for incorrect number of meta channels report in #492.
-Moved the free to the correct position to fix #4446.
-Fix for possible realloc.
-Fixed more memory leaks.
-Added missing return to avoid use after free.
-coders/png.c: Stop a memory leak in read_user_chunk_callback() (reference
-Removed duplicate call to GetMultilineTypeMetrics.
-Added check to make sure that the context is not null.
-fix issue: outside the range of representable values of type 'unsigned int' at coders/psd.c:1025 (#4963)
-Set pixel cache to undefined if any resource limit is exceeded
-Some fixes for connected-components:area-threshold.
-Call png_error() after detecting NULL colormap when writing PNG8
-Fix improper cast that could cause an overflow as demonstrated in #347.
-Skip MNG CLIP chunk with out-of-range object IDs
-Rec601Luminance and Rec709Luminance intensity methods return linear gray
-possible heap buffer overflow (https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-35q2-86c7-9247)
-Prevent infinite loop
-Prevent buffer overflow (bug report from Ibrahim el-sayed)
-Added missing call to ConstrainColormapIndex.
-Fixed skipping tiff directory when reading sub image.
-fix #5033: runtime error: load of misaligned address (#5034)
-[FG-VD-19-136] ImageMagick Convert SVG MacOS Denial Of Service
-Added NULL checks.
-There is a Division by Zero in function OptimizeLayerFrames (#2743)
-fix multiple memory leak in ReadYUVImage
-Fixed incorrect call to WriteBlob reported in #490.
-fix stack overflow when parsing malicious tiff image
-Zero pixel buffer
-Ensure image extent does not exceed maximum
+call freeaddrinfo in other error cases
+Use H2O_UINT64_LONGEST_HEX_STR instead of a handcoded length for _chunk_len_str
+drop send_server_timing_trailer flag with HTTP/1.0
+send 503 in case of ENFILE or EMFILE
+avoid infinite loop when user want send more bufers count than ours in on_msg_callback()
+fix memory copy bug in upgrade to http2
+report configuration error if no handler was defined for a given path
+reset `reprocess_is_too_early` when reprocessing
+Follow existing h2o_find_header call checks
+[http2] do not start a pending request while trying to close the connection on error
+ignore push indications made by a pushed response, as specified by the HTTP/2 spec.
+headers returned by upstream server MUST always be copied #190
+Handle fcntl failing to set CLOEXEC CID 1396802
+ignore SIGPIPE using sigaction
+fix overflow (amends #873)
+backlinks should be updated on rebind
+If an upload is in progress, we might have a connection pending
+apply patch from Robert Scott to fix - shifting some bounds checking
 Add assertion on result alignment to GC_unix_mmap_get_mem
 New field (expl_freed_bytes_since_gc) in public prof_stats_s
 Fix calloc-related code to prevent SIZE_MAX redefinition in sys headers
@@ -1249,33 +441,21 @@ Eliminate GCC warning about uninitialized 'hhdr' in GC_allochblk_nth
 Fix allocation size overflows due to rounding.
 Fix calloc() overflow
 Use __builtin_extract_return_addr in GC_RETURN_ADDR_PARENT (gcc/x86)
-Fix wrong comparison
-Preallocate the memory when possible
-Make sure that the BINARY responses are parsed correctly
-Inform about the CAPABILITY command being in progress
-C++: an algorithm instead of an explicit for
-Truncate overly long messages
-don't boother with FLAGS checking when we've already fetched all children anyway
-Show mailboxes with unread messages in bold
-Parser: be more conservative when estimating the line size
-Be on the safe side when freeing stuff
-Reset the ThreadingMsgListModel after setting the previous model, too
-TaskPresentationModel: implementation of parent() was obviously wrong
-Check uidvalidity when copying messages around
-Use SQL transactions
-Make sure to deleteLater() active tasks when killing the parser
-BINARY: only use the binary fetching on leaf MIME parts
-Fix possible assert crash
-GUI: Special handling for parts whose MIME structure failed to parse
-Add the basic logging infrastructure into the Tasks
-Make sure we always work with uppercased capabilities
-v8: Interrupts must not mask stack overflow.
-Fixed a systematic memory leak that could happen if a decoder fails
-Be more careful when calculating sinc() for small arguments
-Fixed a memory leak in the BMP decoder
-Reduced the max memory use and image size in 64-bit builds
-Fixed a GIF decoding bug (divide by zero)
-Made sure we fail completely if an attempt is made to reuse an imagew object.
+Forgot to free strdup memory - fixed
+CID 90844 Drop incoming conn if unable to get port
+Fixes #138 - null nad after disconnect
+CID 90884 storage_db: Check for bad data type
+Fixed offered SASL mechanism check
+CID 90920 Skip empty template roster file
+[cwave:r60] fix memory leak when sm reconnects
+double free protection
+Changed the way UTF-8 is selected on MySQL connection. Fixes #177
+Fixed possibility of Unsolicited Dialback Attacks
+Log S2S retry timeout to main log
+Handle missing authreg configuration correctly
+Do not null first bytes of just freed memory
+Do not attempt to clean not open session
+mod_verify: close pipe if failed writing to
 Extra pkg_free in free_hostent removed
 ims_registrar_pcscf: Make sure, the contact stays NULL if the ip,port or reg_state is incorrect.
 - add a missing release_data(rd)
@@ -1420,148 +600,442 @@ seas: safety check for target buffer size before copying message in encode_msg()
 core expr eval: fix script functions failure check
 merger errors fixed
 tm: fixed name of the target uri used for From header
-[trunk] Import patch from sumatrapdf team. This handle testcase 2977.pdf.asan.67.2198
-[trunk] fixes heap-buffer-overflow in parse_cmdline_encoder
-fix unchecked integer multiplication overflow
-opj_j2k_update_image_data(): restrict optimized path
-[trunk] Fix mem leaks reported by cppcheck
-[trunk]fixes buffer overflow in t2.c
-Fix resource leak
-Input file format bug fixed
-Change test in opj_tcd_makelayer
-[trunk] Fixed invalid check in in tiff reading method (fixes issue 449)
-Fix resource leak in opj_j2k_encode
-opj_j2k_read_header_procedure(): validate marker size to avoid excessive memory allocation attempt
-[trunk] fix possible memory leak on realloc failure
-[trunk] added box length inconsistency check
 mm: fix prctl_set_vma_anon_name
+[variations] Promote to size_t for length computation in ParseVariationDataSubtable
+[cff] Partially revert 401b456
 gif_read: Set last_name = NULL unconditionally.
 Don't select too many colors.
 Gifsicle: Free Clp_Parser before exit to clean valgrind report.
 Restore old dither-penalty formula, which works better by penalizing less.
 aesthetic change to ReleaseCompressed code
+pam: don't leak TACACS+ secret to journald
+zero the arep structure (Coverity #115822)
 v1.0.5: fix buffer overrun when reading bad WebPs
 Disallow NativeModule creation unless main isolate
-Avoid a double-free when a window size of 0 is specified
-Issue 719: Fix for TALOS-CAN-154
-Skip 0-length ACL fields
-Fix issue 293; plug memory leaks.
-Short cut zero size to avoid notnull attribute for mmemove in glibc.
-Limit write requests to at most INT_MAX.
-When building out the read filter pipeline, ask each filter
-Fix mtree generation
-If the archive is truncated, exit with ARCHIVE_FATAL.
-Fix build error with liblzma on MSVC.
-cast DWORD to int to match %d printf specifier
-Issue 717: Fix integer overflow when computing location of volume descriptor
-Fix a bug that Clang Static Analyzer said "Assigned value is garbage or undefined".
-ARCHIVE_EOF is positive. I'm going to change this in libarchive 3.0.
-Properly return an error code; do not overwirte an error code with a return code
-Fix a possible heap-buffer-overflow in archive_string_append_from_wcs()
-Fix possible null pointer dereference in lz4_filter_read_legacy_stream()
-If Zip entry has already been read, don't try to read it again.
-Avoid a read off-by-one error for UTF16 names in RAR archives.
-Avoid a warning on Windows.
-Minor improvement. Adopt the part of the changes in r3602 to increase
-If the temporary file gets truncated for any reason, die
--C '' is meaningless; complain and die if we are given it.
-7zip: fix crash when parsing certain archives
-Merge r1844 from trunk: Properly initialize struct tm object.
-Issue 761: Heap overflow reading corrupted 7Zip files
-iso9660: Fail when expected Rockridge extensions is missing
-Fix a handling of an empty gname in ustar on Windows.
-Plug memory leak in zip_read_local_file_header()
-Fail with negative lha->compsize in lha_read_file_header_1()
-Plug memory leak in __archive_read_program()
-Minor style fix: Test for null bidder object before trying to
-warc: consume data once read
-Fix libarchive/archive_read_support_format_mtree.c:1388:11: error: array subscript is above array bounds
-Make sure sizes for RAR files are valid.
-In the event the heap allocation fails after a successful allocation,
-RAR reader: fix use after free
-Fix typo in preprocessor macro in archive_read_format_zip_cleanup()
-rar: file split across multi-part archives must match
-Issue 151: clients and filters are now guaranteed to have their
-Don't check for duplicates when adding NFSv4 ACL entries
-Issue #656: Fix CVE-2016-1541, VU#862384
-No inttypes.h on SFU.
-Check for strdup() allocation failure
-Issue #767: Buffer overflow printing a filename
-Issue #718: Fix TALOS-CAN-152
-Do something sensible for empty strings to make fuzzers happy.
-Reject cpio symlinks that exceed 1MB
+initalize ev_res from Scott Lamb
+avoid valgrind false positive by zeroing epoll_event
+Only clear underlying callbacks when the user hasn't reset them.
+http: introduce evhttp_request_free_() helper
+Fix a reversed check in upcast_evbuffer
+evutil_parse_sockaddr_port(): fix buffer overflow
+Valgrind fix: Clear struct kevent before checking for OSX bug.
+Tidy up the code in evthread_make_base_notifiable a little
+uri decode: fix for warning "use of uninitialised value"
+http: fix leaking of response_code_line
+fix a leak when unpausing evrpc requests
+Avoid other RNG initialization FS reads when urandom file is specified
+evdns: name_parse(): fix remote stack overread
+r15245@tombo: nickm | 2008-04-18 09:27:50 -0400
+reset "chunked" flag when sending non-chunked reply
+Fix evbuffer_peek() with len==-1 and start_at non-NULL.
+oneshot means that its removed from the kernel list already
+Fix compile error in win32 listener.c
+pointer arithmetic bug; from Nick Mathewson
+evdns: fix searching empty hostnames
+Fix the code that allowed DNS options to not end with :
+Fix evbuffer_peek() with len==-1 and start_at non-NULL.
+fix another memory leak
 actually return empty stringand not 'em,pty string' as expected
-Plugging memory leak in write_unicode
-xplist: Prevent heap buffer overflow when parsing empty tags
-bplist: Fix data range check for string/data/dict/array nodes
-plistutil: Use static buffer for stat()
-plistutil: Prevent OOB heap buffer read by checking input size
-bplist: Make sure to detect integer overflow when handling unicode node size
-xplist: Also fix OOB read in find_char() and find_str() functions
-bplist: Make sure to bail out if malloc() fails in parse_string_node()
+Ensure the MakerNote data pointers are initialized with NULL.
+possible null deref
+fix php 72494, invalid color index not handled, can lead to crash
+Fix integer overflow in gdImageWebpCtx
+Don't output jpeg error_message directly, but format it first and push it to gd_error_ex(GD_ERROR, ...)
+gdImageScaleTwoPass memory leak fix
+Fixed memory overrun bug in gdImageScaleTwoPass
+Avoid potentially dangerous signed to unsigned conversion
+fix #215 gdImageFillToBorder stack-overflow when invalid color is used
+Fix integer-overflow in gdImageCreateFromGd2Ctx
+return if ctx creation failed
+- #14, some more sanitiy check
+Fix: -Wpointer-sign + -Wimplicit-function-declaration
+handle: Refuse to open files < 8192 bytes in size.
+Really fix the case where a UTF-16 string contains junk after the string.
+handle: Check that pages do not extend beyond the end of the file.
+Add waitpid along guestfs_close path (RHBZ#518747).
+builder: fix prototype virt_builder_yajl_tree_parse
+daemon: lvm: Ignore LVs with the activationskip flag set (RHBZ#1306666).
+hivexsh: cd command: fix error handling
+Coverity: Don't call free_strings (NULL).
+inspect: Fix memory leak of hostname.
+daemon: parted: Don't crash if part-get-name called on non-partitioned device (RHBZ#1142158).
+daemon: ldm: avoid manual free()
+lib: libvirt: Convert all socket parameters to an absolute path (RHBZ#1588451).
+fish: Fix memory leak in inspect/-i code (detected by valgrind).
+Coverity: Don't leak argv arrays.
+appliance: Don't set utime on cachedir until we know it is safe.
+diff: avoid potential null pointer dereference on error
+Coverity: fix memory leak along error path.
+daemon: proto: Close fd along error paths (found by Coverity).
+launch: libvirt: Add libvirt version to the data struct.
+df: Skip final '/' character when calculating basename.
+inspection: Fix double-free when certain guest files are empty.
 Properly dereference record_data to check that it's set.
 common: [security fix] Make sure sockets only listen locally
 remove invalid free
-encode: protect from stack under-flow
-encode: fix empty FIELD_2DD_VECTOR
-micro-opt, just use memset
-sal: GetSystemTimePreciseAsFileTime requires Windows 8
-ofz#817 nStrLen-1 changed to nStrLen-3
-INTEGRATION: CWS jl91_DEV300 (1.11.82); FILE MERGED
-It seems there was an extra semi colon here
-coverity: protect against buffer overflow
-#93464#replaced wrongly used calloc with rtl_allocateZeroMemory
-CID#441298 use after free
-ofz#372 check if ImplSplit succeeded
-Close file descriptor
-ofz#860 clear old data before reading new data
-Fix a copy-paste error
-ofz#889 readjust jpeg import
-tdf#96243 don't crash if LibO install. wasn't found
-Move the sleep earlier, and log it
-INTEGRATION: CWS aquavcl06 (1.3.20); FILE MERGED
-handle empty tokens in longer strings correctly
-coverity: ensure the string is null-terminated
-INTEGRATION: CWS sb3 (1.15.72); FILE MERGED
-INTEGRATION: CWS vcl07 (1.27.2.4.2); FILE MERGED
-CWS-TOOLING: integrate CWS gcc44
-INTEGRATION: CWS cmcfixes23 (1.36.48); FILE MERGED
--Werror=strict-aliasing (GCC 6)
-INTEGRATION: CWS sysint1 (1.3.86); FILE MERGED
-#i90609# SIZE_MAX undeclared for .Net2003 compiler, take SAL_MAX_SIZE instead.
-Fix potential memory leak in GLES_CreateTexture
-Always create a full 256-entry map in case color values are out of range
-zero memory on malloc
-fix a used-before-set error in im_vips2dz
-fetch map after DGifGetImageDesc()
-Limit lenght to INT_MAX bytes in rfbProcessFileTransferReadBuffer()
-fix crash because of unaligned accesses in hybiReadAndDecode()
-Error out in rfbProcessFileTransferReadBuffer if length can not be allocated
-libvncclient: fix pointer aliasing/alignment issue
-libvncclient/tls_openssl: do not deref a NULL pointer
-libvncclient: bail out if unix socket name would overflow
-libvncserver: fix pointer aliasing/alignment issue
-libvncclient/cursor: limit width/height input values
-libvncserver: encodings: prevent OOB accesses
-libvncclient/rfbproto: limit max textchat size
-LibVNCClient: remove now-useless cast
-libvncserver: scale: cast to 64 bit before shifting
-libvncclient: free vncRec memory in rfbClientCleanup()
-LibVNCClient: fail on server-sent desktop name lengths longer than 1MB
-LibVNCClient: ignore server-sent cut text longer than 1MB
-rfbserver: don't leak stack memory to the remote
+Removed unused variable from_len
+Get openswan to send the remote host address to PAM during XAUTH
+Variation of a fix for dpdaction=restart
+fix format warning in in_struct() to use %li instead of %d for remain=
+confwrite: its left/rightrsasigkey, not left/rightrsakey
+pluto: fix double free in load_cert_from_nss()
+IKEv1: packet retransmit fixes for Main/Aggr/Xauth modes
+chunk: in freeanychunk() clear .len as well as .ptr
+proper fix for mtu calculation initialization
+Fix to allow ";" in the ike/esp parameters as per man page. Patch
+LSW_FDMASK: Avoid signed integer overflow
+IKEv2: send_v2_notification() used hardcoded ISAKMP_v2_SA_INIT exchange
+PROPOSED change: find_sender()'s assumption on pacet length is wrong
+security: Fix for CVE-2020-1763
+Fix CK_PERMANENT rekeying exception more readable.
+ikev2: fix send certreq
+Fix for setting up connections using two different source IP's to the
+Use protocol values from netinet/in.h instead of hard-coded values
+pluto: dpdaction=restart folloup to 24f14ba85ed250b
+ikev2: tweak debug log in process_encrypted_informational_ikev2
+send_notification() in ikev1_main.c did a wrong check on out_raw when
+IKEv2: log key size in proposal matching code
+The compile caught a type mismatch for vsnprintf, this change fixes it, but
+Fix for HAVE_STATSD log output when two connections share a phase1
+Avoid malloc(0) by doing an early abort in show_connections_status() when
+Off by one in comparison on checking key lengths
+NAT-OA support is different between netkey/klips
+Fix for https://bugzilla.redhat.com/show_bug.cgi?id=489113 [Avesh Agarwal]
+nss: when there is no NSS DB, don't try to authenticate
+make sure to unpack the nonce that was calculated.
+pluto: in lease_an_address() do not handle lingering if we can't share lease anyway
+* pluto: don't log 0 bytes traffic stats for phase1 SA's
+Changed the default time out for ikeping from 10 to 3 seconds.
+x509: free shallow general names after requesting crl fetch
+ikev2: during Child SA rekey negotiation abort when ESP proposals mismatch.
+* Support reading NSS password from file
+ikev2: reject SKF payloads when the remote never negotiated them
+eliminate an LLVM warning about an unused value
+Re-enable commit c2ea09114589251c4a1aa615038bf86c3cd9b367.
+fixed loop to deal with las_prev properly. This might be the cause of the
+Remove extra sql: from NSS db directory name.
+* pcr_init() should memset the request helper size, not pointer size [Avesh]
+Fix warning from multi-defined IPSEC_SA_REF_MASK
+Order algs correctly for OCF processing
+whack/addconn: Don't throw non-zero exit codes for informational messages
+I have attached a patch to solve an issue in which pluto was crashing
+Use ixs->physdev->ifindex not ixs->physdev->iflink, so that VLAN's which
+fix typo. the previous commit brome make.
+dev_get_by_name API change in 2.6.24
+impair: fix typeo in impair table
+Warn if bytes from cert blob read is not what we expected.
+pluto: ensure type=passthrough is not rejected for missing ESP/AH
+When built against libcap-ng to drop posix capabilities, pluto must
+pluto: undo bug introduced in 0395c26ac17af9b02e4f1b84d7279288fc985ced
+Set the default havestatsd connection change from "unknown" to "down",
+2. Protocol port issue when using hostnames instead of ipaddress in
+set the received message to zero, to make sure
+silence a coverity warning
 fail HELLO command when SSL is required
-cgfs: fix dorealloc's batch allocation
-Fix a crash bug with malformed URIs (Issue #418)
-Fix potential BMP stack overflow (Issue #453)
-Block GIF images with a code size > 12 (Issue #463)
-Call check_pages when writing links (Issue #480)
-Fix a number-up crash bug (Issue #413)
-Fix another crash bug with bogus data (Issue #431)
-Fix a crash bug with bogus text (Issue #426)
-Fix BMP crash bug (Issue #444)
+sonmp: fix heap overflow when reading SONMP packets
+Removed a potential buffer overflow crash in GmfOpenMesh and debugged the test_libmeshb_block_pipeline.f that crashed
+Fix bug in load() to set in_left to zero on end of file
+Fix possible memory overwrite vulnerability. (#134)
+protect against labelitemindex < 0 take 2, > 0 changed to >= 0
+Added a debug call for un-usable rotation
+msWMSDescribeLayer: replace hardcoded version on XML output with passed parameter
+set version to 0.5-dev
+Fixed bug 769, duplicate error with TILEITEM.
+make sure to initialize sde->row_id_column to NULL or we'll blow
+fixed casting issues to avoid warnings
+Fix potential SQL Injection with postgis TIME filters (#4834)
+add mod0geocache version string to server header (can be disabled)
+Correct GetLegendGraphic using keyimage #3398
+Layer footer works now, queries seem to as well.
+undo previous commit
+fix normal offset computation (not used yet)
+Added the declaration for freeStyle to eliminate the unresolved externals.
+Correct problems when building on Windows.
+fix leak on group_layers
+Don't try and use msBuildPath() if filename is NULL (stdout) in msSaveImage().
+change tmpId string to be non static in msTmpFile() (bug 1312).
+fix uninitialized text outline width in error image
+Fixed error with embeded scalebars and legends.
+Fixed one more issue with loadExpressionString...
+Added function prototype for msValidateParameter() to mapserver.h
+Fix failing repeated FOLLOW labels when maxoverlap is triggered (#4910)
+Added check after malloc/realloc in msAddLineDirectly().
+don't free any static memory
+fixed x/y transpose bug with alpha blending for RGBA imagemode
+don't add default padding around polygon tile symbols
+Fixed looping error in mapgml.c when writing multipart line strings. Thanks to peter.slootweg@shaw.ca.
+Check for errors in msOGCWKT2ProjectionObj
+Fixed memory leak of encoded entities in msGMLWriteItem().
+Fixed templating code to respect msJoinConnect return values for URL templates. (bug 1989)
+fix ms_newmapobjfromstring on windows #2877
+fixed small leak in msRemoveStyle
+div by 0 typo
+Fix MSSql Filter
+SDE: Fix for the crash with CLOB type (#3001)
+avoid segfaults on empty shapes (#4092)
+Changed default styleObj offsets to 0, duh...
+Use appropriate free routine
+Add <ogc:PropertyName></ogc:PropertyName> tags in SLD label (#4921)
+corrected error reporting
+Correct test to resolve PROJECTION AUTO in msSHPLayerOpen() is '#if defined(USE_GDAL) || defined(USE_OGR)'
+fix surface size when rastering rotated SVG symbols
+security fix (patch by EvenR)
+Legend icon for label layers should not rotate (#5391)
+Fixed bug in sub select after last merge
+Applying InnoDB snashot 5.0-ss5406, part 1. Fixes BUG#38479
+Get rid of more mallocs
+ha_myisammrg was missing index_type() method bug#6756
+ndb - bug#25636
+Fix of result code check by Monty's request.
+parallel repair: style fixups
+branches/zip: recv_scan_log_recs(): Replace while with do...while,
+fix for bug #212
+branches/zip: ha_innobase::add_index(): Check for !innodb_table.
+Fix for division by zero problem:
+avoidance of caching mysqldump queries
+DB-805 DB-806 the tokudb loader requires a transaction
+[t:4472], add table lock for truncate
+Add /*== ... === */ decoration that was missing around some auto-inc functions.
+IB: production compilation fix
+[t:4942], fix memory leak
+fix breakage on qnx
+fixed BINLOG crashes in case of badly formed statement (Bug #17457)
+ndb: wl-2066 small fix
+Merge a patch from MySQL AB:
+Fixed C syntax error in mysys/mf_keycache.c.
+Added missing prototypes to mysys/my_bitmap.h
+[t:4920], in ha_tokudb.cc, protect indexer->close and indexer->abort with shanre->num_DBs_lock
+Bug #24487 Valgrind: uninited byte in table->record[1] in binlog code for rbr + innodb
+Fix for Bug#29605
+branches/zip: lock_update_discard(): Fix a bug introduced in r949:
+Addresses #1683 Assert shutdown is not called twice on the same minicron
+- Working on eliminating valgrind warning/errors
+Addresses #1576 Remove 'return a-b' comparison trick from default key compare function
+correct fix for the bug #6151
+MDEV-12799 Buffer overflow
+#4560 add check time to handler stats (visible with show table status) refs[t:4560]
+refs #5560, fix bug
+Compile fix needed for AIX,
+(btr0sea.c:1510) Bug#55227 Fix compiler warnings in innodb with gcc 4.6
+branches/zip: row_create_table_for_mysql(), row_create_index_for_mysql():
+refs #5671 fix an off-by-one error
+don't use my_copystat in the server
+mysqld won't give a warning any more, if --user=user_name is used,
+[t:3875], fix a bug where we forgot to reset size of range query buffer
+Bug#16192219 CRASH IN TEST_IF_SKIP_SORT_ORDER ON SELECT DISTINCT WITH ORDER BY
+branches/zip: Cast void* pointers to byte* when doing pointer arithmetics.
+Bug #28653 Fast GCP + high load + high RedoBuffer causes ndbrequire
+Bug#17326567 MYSQL SERVER FILESORT IMPLEMENTATION HAS A VERY SERIOUS BUG
+followup to SET PASSWORD fix
+branches/zip: btr_search_guess_on_hash(): Do not call buf_block_get_frame(),
+Converted mysys/base64.c into C code (not C++).
+add debug print for bit field
+trx_undo_parse_page_header(): Silence a bogus warning.
+Explicitly cast val.len
+don't load plugin of unsupported types
+Followup: rename the declaration (hash_reset -> my_hash_reset)
+[t:4745], only call toku_update_descriptor in deserialize_brtheader_versioned if we are upgrading header
+BUG#26625: crash in range optimizer (out of mem)
+A small fix for HP-UX when used --with-debug
+Merge a patch from MySQL AB (Mats Kindal):
+Remove a "register" keyword from C++ code
+Bug#14653504 CRASH WHEN TRUNCATING PARTITIONS FROM A VIEW!
+After merge fix.
+Fix for previous cset
+fixed picture in comment.
+flags should be sent as second arg to my_error
+Push history-limiting code until after the code that adds new
+Adapt a MySQL 5.7 fix for SET GLOBAL innodb_buffer_pool_size
+reverting the change that results in infinite recursion
+MDEV-9678: Data Directory bug
+After-push commit for bug #33461 to make valgrind happy:
+branches/zip: Check for autoinc next value overflow explicitly when offset
+Merge from mysql-trunk-innodb into mysql-5.1-innodb/storage/innodb_plugin:
+Fix Bug #53947 InnoDB: Assertion failure in thread 4224 in file .\sync\sync0sync.c line 324
+wl2077: ndb, disable scanning of backup fragments
+Bug#43932 myisam index corruption with large index and large
+use show_table instead of share
+better overflow checks in decimal2ulonglong
+1) Removed to hard require
+Fix MERGE tables on Microsoft Windows. This a backport of the
+[t:2435], display amount of data_free in show table status
+Fix compile failure in non-debug build.
+Bug#51612 Un initialized locker_lost variable in pfs_instr.cc
+branches/zip: row_merge_create_temporary_table(): On error, free the
+Fix compilation failure in mi_create.c
+branches/zip: row_scan_and_check_index(): Check
+MDEV-7526: TokuDB doesn't build on OS X
+Bug #14634 Running out of diskspace on tmpdir returns an inappropriate error
+Bug #5843: Server code does not check whether PID file was successfully written
+branches/zip: buf_page_init_low(): Initialize also flush_type.
+mlog_parse_index(): Remove an off-by-one error in the bounds check that
+Bug#24449090 - BUFFER OVERFLOW IN FUNCTION DUPL
+Deal with properly
+Page number calculation fixed.
+Support DATA_VARCHAR for bound literals.
+Fix warning about possibly uninitialized variable "warnings"
+(row0vers.c:74) Bug#55227 Fix compiler warnings in innodb with gcc 4.6
+MDEV-10246 ssl-* config file options have no effect without mysql_ssl_set()
+After merge fix.
+Small fix for Field_str::store() to avoid trying to read past beginning
+bad merge fixed
+branches/zip: Deny non-superuser access to the INFORMATION_SCHEMA
+Bug#13612811 VALGRIND ERROR IN OS_AIO_INIT
+sync0arr.c: Fix compilation error on some systems by introducing all
+Addendum to the fix for bug 45807 : initialize a member needed in
+MDEV-26561 mariabackup release locks
+Fix Windows compile errors.
+Remove the temporary file created by mysql_upgrade
+ndb: failed update updated tuple version. crash at DbtupTrigger.cpp 1102
+branches/zip: btr_cur_optimistic_insert(): Remove a redundant condition.
+Fixed a bug in option --lower-case-table-name in mysqld.cc
+branches/zip: row_sel_sec_rec_is_for_clust_rec(): Augment the bug fix in r918:
+BUG#16207679: MISSING ERROR WHEN RESIGNAL TO MYSQL_ERROR=5
+Fix ha_rocksdb::calc_eq_cond_len() to handle HA_READ_PREFIX_LAST_OR_PREV correctly
+Tokutek/mysql56#5 optimize read only transactions
+Bug#14840488 VALGRIND ERRORS IN MYSQL_CLIENT_TEST
+make it compile with -ansi -pedantic
+refs #5133, fix compilation error
+fix csv test failure on aix
+protect deleted objects from reusal with safemalloc technique
+Add missing STMT_ATTR_PREFETCH_ROWS to mysql_stmt_attr_get
+During Maria's checkpoint, use the proper mutex to read transaction's short_id
+Bug #12589928: MEMORY LEAK WHEN RUNNING SYS_VARS.SECURE_FILE_PRIV
+bug in JOIN_TAB::cleanup() that caused freed memory to be accessed
+ndb - replication
+allocate an array of pointers to ctpair's rather than an
+Closes #2121 closes[t:2121] Free memory for last remaining ydbtime struct when shutting down.
+Bug# 20376760: STACK-BUFFER-OVERFLOW WITH LONG PATHS TO CERTAIN VARIABLES
+branches/zip: btr_cur_optimistic_insert(): If btr_page_reorganize()
+BUG#21833 (Prepare_commit_mutex not locked and unlocked under same condition):
+MDEV-9988 - Insert cast to suppress -Wdynamic-class-memaccess
+Bug #32167: another privilege bypass with DATA/INDEX DIRECTORY
+[t:4580] free brtnode after checking garbage stats
+branches/zip: Restore the transaction commit that was removed in r1583.
+A fix (bug #7261: Alter table loses temp table with lower_case_table_names=2).
+Follow-up fix for MDEV-12352: Plug a memory leak
+[t:3825] #3825 Add malloc_fail and realloc_fail to engine status.
+Apply InnoDB snapshot innodb-5.1-ss2858, part 9. Improve a comment.
+MDEV-5830: Assertion failure mutex_get_waiters(mutex) == 0 at shutdown.
+fixed bug #1661 Compiling --pstack fails with binutils 2.13.90
+sco compile fix: MAXPATHLEN
+Backport of the fix for bug#25421 to 5.0.
+implement Db::set_error_stream. closes #257
+ndb - post merge fixes
+MDEV-14082 Enforcing innodb_open_files leads to fil_system->mutex problem
+bugfix: delayed insert table was using other table's expr_arena
+Don't start profiling too soon. Begin timing when the packet is
+branches/zip: row_sel_sec_rec_is_for_clust_rec(): If the record in the
+branches/5.1: Use btr_free_root() instead of fseg_free() for
+memory leak fixed
+#2915 closes[t:2915] fix the shutdown log entry timestamp
+Fixed a bug in vis.c
+BUG#24401 - MySQL server crashes if you try to retrieve data from
+MDEV-26574 An improper locking bug due to unreleased lock in the ds_xbstream.cc
+BUG#15978766 - TEST VALGRIND_REPORT FAILS INNODB TESTS
+buffer overflow and information exposure bugs fixed
+Bug #10947 mysqlshow wildcard failure on Windows
+Initialize lex->mqh structure. Fixes valgrind warnings.
+Fix bug#55699 - Assertion failure in innodb plugin with large number of threads
+Whoops, freed something not malloced
+Rename two occurences of net_set_*_timeout that has changed file
+Applying InnoDB snapshot
+Improve a comment.
+Maria: fix for "use of uninitialized value" Valgrind error.
+memory leaks fixed
+Fix for bugs #6955 SHOW PROCEDURE STATUS crashes the server,
+fixed bug in mysqlbinlog
+do not ignore first char, when truncating spaces in str->num conversion.
+stack overflow check added for subqueries processing (BUG#4554)
+Bug#32158 Crash in open_table_from_share, on mysql_unpack_partition errors
+Initialize lex->mqh structure. Fixes valgrind warnings.
+branches/zip: buf_LRU_block_remove_hashed_page(): Add some debug assertions.
+Bug #27119 server crash with integer division by zero during filesort on huge result
+[t:5131] closes #5131.
+Tabname defaults to the table name for MONGO tables
+Fix a merge error introduced in:
+[t:5131] closes #5131.
+[t:3266], make fix for virtual columns
+branches/zip: os_mem_alloc_large(), os_mem_free_large():
+[t:3110], make change to get partitions in MariaDB 5.2.3 to work right.
+Bug#19804 Tests run with valgrind shows uninitialised value in yaSSL
+Revert "fixed typo #226"
+sync0arr.c: Fix compilation error on some systems by introducing all
+If doing write, then peeking is not needed
+ndb - NdbDictionaryImpl.cpp: fix access to freed memory
+Fixed issue with retrying autocommitted transactions. We might need to
+Bug#37453: Dropping/creating index on partitioned table with
+Bug :#16005310 FIx bug - INNODB_ROW_LOCK_TIME_MAX SEEMS TO HAVE AN OVERFLOW
+valgrind error fix(addon)
+Bug#18964 "return 0 instead of DBUG_RETURN(0) in sql_base.cc::open_table()"
+changed signature of get_default_no_partitions
+ndb - bug#27581
+MDEV-15550 Add error handling for fopen
+branches/innodb+: row_purge_remove_sec_if_poss_low(): Remove a suspicious
+Bug#11758009 - UNION EXECUTION ORDER WRONG ?
+Fix for bug #1855: mysqld crashes with certain SSL connections
+#272 set TokuDB product name
+The fix for bug#17248 accidentally removed the sync_binlog variable.
+A fix for Bug#7365 "embedded server for MacOS: problem with prepared
+implement UNIQUE_CHECKS=0 in the tokudb storage engine. close #428
+Fixed that max_zfile_size was incorrectly calculated on big-endian boxes.
+Minor fix in cursors execution.
+Bug#16914007-INNODB: CHECK TABLE SHOULD MARK AN INDEX AS CORRUPTED
+MDEV-26561 Fix a bug due to unreleased lock
+a small comment about why we call end_io_cache in mysql_load
+initialize mysql->charset in mysql_init
+Fixed a probable typo. Unfortunately we will not be able to test this ;-)
+fix a build problem. addresses #1396
+fix for decimal.c
+minor bug fixed
+Cset exclude: msvensson@neptunus.(none)|ChangeSet|20061220175325|03033
+32-bit fix: first cast the value to a signed type, then subtract
+Merge in patch for bug 12380149
+bad fix of the bad cleanup corrected :)
+[t:3073], fix bug
+branches/zip: page_validate(): Check the buf[] bounds.
+Fixed a typo, which prevented non-valgrind build.
+Fix for failing INSERT IGNORE
+branches/zip: row_sel_sec_rec_is_for_clust_rec(): If the record in the
+Fix BB failure, crash in join_nested.test
+Safety fix: lock binlog_end_pos before calling signal_update
+Fix a warning about extra parenthesis
+unused variable handler_items removed
+Bug#50557 checksum table crashes server when used in performance_schema
+connect zip bug fix
+Manually merge a GCC warning fix from 5.1 to 5.5:
+Removing useless mysql_field_seek
+Bug #17760379 COLLATIONS WITH CONTRACTIONS BUFFER-OVERFLOW THEMSELVES IN THE FOOT
+KaxBlockInternal: check EBML lace sizes against available buffer space
+Fixed an array overflow problem in the JPC decoder.
+Changed the JPC bitstream code to more gracefully handle a request
+Made some minor cosmetic changes.
+The memory stream interface allows for a buffer size of zero.
+jpc_t1cod: check whether passno is in range
+Ensure that not all tiles lie outside the image area.
+Added range check on XRsiz and YRsiz fields of SIZ marker segment.
+Fixed another integer overflow problem.
+Fixed a bug that resulted in the destruction of JP2 box data that had never
+Fixed a bug in the packet iterator code.
+Fix security issue reported by someone.
+push cache_lock deeper into item_alloc
+A bit more space for server_stats, and an assertion (bug 27).
+quick fix for slab mover deadlock
+Another buffer overrun fix.
+GET related stats increment fix based on HIROSE Masaaki's patch.
+Don't overflow item refcount on get
+Fix thread DTrace probe.
+CVE reported by cisco talos
+fix segfault in "lru" command
+Use strncmp when checking for large ascii multigets.
+disable UDP port by default
+Add the size of the cas (if present) to the ITEM_ntotal
+fix off by one in slab shuffling
+minor: Fix overflow in Clipsal-CMR113 and Somfy-IOHC reported by aug5t7
 wildmidi_lib.c (WildMidi_Open, WildMidi_OpenBuffer): refuse to proceed if less then 18 bytes of input
 minor tidy-up in GetOutput()
+fix bug in WritePixels() with transparent colors
+fix "pixel overrun"
 net/sched: remove unneeded NULL check
 HID: wiimote: use unique battery names
 OMAPDSS: HDMI: init output earlier
@@ -5062,81 +4536,137 @@ ASoC: Suppress restore of default register values for rbtree cache sync
 leds: 88pm860x: add missing of_node_put
 [PATCH] pci: store PCI_INTERRUPT_PIN in pci_dev
 [SCSI] bfa: off by one in bfa_ioc_mbox_isr()
-Fix overflow bug while calculating new size of buffer
-cbson: PySequence_GetItem returns a new ref
-Don't leak when BSON decoding fails.
-Fix null pointer when decoding invalid DBRef PYTHON-532
-server: http_parser: fix pointer protocol length
-Mandril: check decoded URI (fix #92)
-Do not free CR before check KeepAlive
-iov: buf to free non-zero allocation
-Mimetype: fix leak if initialization fails
-Signal: if write fails, print error
-Fix function parameter
-MK_TRACE: Read MONKEY_TRACE env var to focus on specific source files
-mk_server: HTTP: do not mk_bug() when status is already completed
-Fix #22: Memory leak at dirhtml, no freed memory
-mk_core: thread: fix ucontext.h path
-Scheduler: Close connection after MK_PLUGIN_STAGE_10
-Mandril: fix network address reference
-mk_server: streams: fix dereference after null check (CID 1312109)
-Duda: SQLite: fix return value on sql_dump()
-mandril: Remove unused function argument
-Scheduler: free mk_sched_conn on closing connection
-Forbidden access to directories without handler
-palm: getpeername may fail, found by coverity
-liana_ssl: Fixed the return values for _mkp_event_read() to proper follow the new event api
-utils: Fix a valgrind warning about uninitialized data
-Do not allow backward directory requests '..'
-mk_core: event: epoll: rename context variable to avoid conflicts
-bin: declare missing server ctx
-Plugin: add export to buffer_size function.
-mk_core: event: epoll: rename context variable to avoid conflicts
-lib: do not left stage30 until all content is sent
-Sched: Fix a segfault when iterating timeouts
-Selectively cache headers.
-Don't overflow tmp in msg_parse_fetch.
-Handle NO response without message properly
-Ensure UID in fetch_uidl.
-Verify IMAP status mailbox literal count size.
-- fixed - Bug in presentation layer parser can cause infinite loop (LIB61850-302)
-receive: fix buffer leak when receiving invalid packets
+Allow the special ECMA key when parsing assembly names (bug#660570).
+Allow only primitive types/enums in RuntimeHelpers.InitializeArray ().
+Fix an unlikely case in cmd_to_string () where cmds would be accessed uninitialized.
+[runtime] Fix a case where klass->blittable was written without holding the loader locked. (#5331)
+Disable wrapper generation code when DISABLE_JIT is defined.
+tasklets.c: update used stack size
+[wasm] Mono relies waaaay too much on mmap returning zero'ed memory, so just do it.
+[runtime] Set klass->inited under the loader lock.
+For Bug 2014: map FcntlCommand to local system command for fcntl_lock
+[marshal] Wrap icall managed obj input arguments with handles.
+[jit] Fix the handling of byref locals in mono_allocate_stack_slots2 ().
+Constructors signatures must be hasthis.
+Detach the current thread as soon as possible when mono_gc_pthread_exit is called.
+Making sure mono_marshal_free is used instead of g_free in mono_string_builder_to_utf8
+Remove dead code
+[sgen] We don't need to trim the free list when finishing gray stack
+[arm] Set more information in cinfo for fp returns, gsharedvt depends on it.
+[marshal] Only copy the minimum of size/length, not the full size, fixes #46288 (#4031)
+[jit] Avoid emitting seq points in inlined methods.
+[runtime] Fix mono_class_inflate_generic_method_full_checked handle of partially inflated generic methods. Fixes #29585.
+[llvmonly] Avoid disabling llvm for the Selector.GetHandle () intrinsics.
+Restore NULL check which PR #3040/#3105 mistakenly removed (bug 41623) (#3219)
+[llvm] Fix 32 bit platform support which got broken after c678533842f10356968c203ed8fa43e86a406c6e.
+Disable some of the FastCopy fast paths since they are racy.
+Ignore seq points of entry and exit IL offsets.
+Avoid warnings on machines with cpus > 16.
+[sgen/mono] Don't leak stack info struct
+[sgen] Save more space in M&S block infos.
+[checked] Imageset may reference corlib implicitly in another imageset.
+do not exit after the first read!
+[runtime] Fix minor leak
+[runtime] Don't free null cache hash table in aot compiler
+Ensure the Monitor.Enter() fastpath doesn't apply to Enter(o,ref taken).
+[llvmonly] Avoid disabling llvm for methods with pinvoke signatures in llvmonly mode.
+MIPS: Sanity check stack unwinding progress using frame pointer, not PC
+[coop handles] Fix monotonic handle check race with stw in mono_handle_new
+LockFile() should error with ERROR_INVALID_PARAMETER on overflow
+Fix the unwind info for r7 on arm in managed-to-native wrappers.
+Enums are classes that can be assigned to value types
+2007-08-03 Zoltan Varga <vargaz@gmail.com>
+[runtime] Avoid crashing in mini_jit_info_table_find () if the current thread is not set.
+Fix access to freed members of a dead thread
+Convert the argument of OP_INOT to int in the llvm backend. Fixes #6377.
+Set the WSQ TLS key to inited after initing it.
+Invalidate the context as well at the end of ss_start (). Fixes #3272.
+For module handles, only check that rva's are within the image size.
+Check return value of asn1_generalizedtime_to_tm ()
+Couple with missing methods in MonoClass::methods.
+Fix the previous change.
+Fix linux builds.
+Change the other place where threads_starting_up is created too.
+[llvm] Add a missing r4 opcodes.
+Fix the build.
+[runtime] Free temporary attr structure
+[aot] Fix a memory leak.
+Fix my profiler loader.
+Fix a bug introduced by the previous change to mono_jit_walk_stack_from_ctx_in_thread ().
+[sgen] We must do bridge processing with all sgen locks taken.
+[runtime] mono_class_init() - don't look for metadata if the dynamic image doesn't have it.
+[arm] Make sure MONO_CONTEXT_GET_CURRENT () sets sp to an aligned value on watchos.
+[profiler] Replace a check with an assert in coverage_filter ().
+Fix a buffer overflow in the LLVM backend. Fixes #8502.
+More verbose error message when sgen_register_fixed_internal_mem_type fails
+Use mono_gc_memmove instead of memcpy to ensure store atomicity.
+[interp] box IntPtr on return of runtime_invoke
+[profiler] Fix sampling timestamp output.
+[bcl] Fix Process.PrivateMemorySize64 on osx, we now return task_baic_info.resident_size. Fixes #19738.
+[sgen] Fix evacuation.
+[mono] Fix maybe-uninitialized warning.
+[runtime] Fix malloc backend for mempools.
+Add an assert to detect TLS mismatches between the aot compilation and runtime environment.
+* mini-s390[x].c (is_regsize_var): Support PTR/FNPTR too.
+[sgen] Fix names of descriptor types in describe_ptr().
+[profiler] Avoid instrumenting inlined methods
+[runtime] Free LLVM failure message
+Fix a JIT crash when -v -v -v -v is used.
+Fix warnings (#6685)
+PowerPC build fix in mono-hwcap-ppc.
+[runtime] Make mono_trace_set_printerr_handler () call g_set_printerr_handler (). Fixes #31451.
+[threads] Print more information in case of error in global suspend
+[profiler] Use thread_exited profiler event for recording thread end events.
+[runtime] Speed-up MERP timeout
+Replace a g_assert with a g_error.
+[threadpool-ms-io] Fix compilation warning
+[runtime] Free leaked variable. (#4643)
+[aot] Add support for constrained gsharedvt calls which return a reference value. Fixes #13030.
+Don't crash here ;-)
+Correcty initialize image ref_count. Ensures image is correctly unloaded during appdomain unload. (#3084)
+Use IPPROTO_TCP instead of SOL_TCP for cross-platform compatibility.
+Avoid leaking 'generic_array_method_info' by allocating it from the mscorlib
+fixed minimum mtu
+fixed firejail symlink problem for --private-bin option
+tentative grsecurity fix for Error getpwuid:init_cfg(179): Permission denied
 Set DSCP bits for IPv6 when setting traffic class.
-Fixed Array.prototype.slice() with slow "this" argument.
-Fixed Array.prototype.fill() for typed-arrays.
-Fixed Object.defineProperty() when a recursive descriptor is provided.
-Fixed Array.prototype.sort() when arr size is changed in a comparator.
-Fixed typo while calculating module path length.
-Fixed frame allocation from an awaited frame.
-Added missing element in typeof table for DataView() type.
-Fixed Array.prototype.concat() when "this" is a slow array.
-Fixed Array.prototype.lastIndexOf() with unicode string as "this".
-Security fix: prevents empty host from being used
-Fixed missing initialization
-Fixes mem leak on ssh signatures
-Added code to randomize values returned by rand()
-Minor fix for detecting failure during directory creation when already existing
-Prevents a possible memory leak
-Fixes param socketcall.recvfrom points to uninitialised byte(s)
-Added fix for using aggregations with dummy interface
-Disables CGI support in mongoose
-Add missing SSL certificate mismatch status
-Fix compilation error: this statement may fall through
-Fixed glitch in host pools
-Fixes an out-of-bound memory access
-Handles category shapers
-fix PR#7003 and a few other bugs caused by misuse of Int_val
-typo in comment fixed: CAMLreturn1 -> CAMLreturn
-Oups, code de test commis par erreur
-Mapper WSAEINVAL sur EINVAL
-fix wrong function name in merge of GPR#596
-Use configured ARCH_UINT64_TYPE, not C99 types
-Added public functions "caml_array_length" and "caml_is_double_array"
+* bugfix #70: heap Out-of-bound Read vulnerability in
+crypto: fix memory leak in ECDH::SetPrivateKey
+src: fix node_crypto.cc compiler warnings
+v8: fix --max_old_space_size=4096 integer overflow
+v8: force inlining of v8::internal::DescriptorArray methods
+Also accept 'utf-8' to specify utf8 encodings.
+src: fix use of uninitialized variable
+cluster, v8: fix --logfile=%p.log
+Implement SecureContext destructor
+src: fix nullptr dereference for signal during startup
+node: follow specification, zero-fill ArrayBuffers
+tls: do not leak WriteWrap objects
+Fix memleak in ChildProcess:Spawn().
+src: fix gc heuristic for external twobyte strings
+crypto: fix memory leak in CipherBase::Final
+Fixed/Completed buffer copy range checks.
+openssl: fix uninitialized memory access
+crypto: fix memory leak if certificate is revoked
+watchdog: fix timeout for early polling return
+buffer: guard against integer overflow
+src: remove cpplint error using NOLINT directive
+src: make CipherBase::kind_ const
+src: fix minor memleak in preload-modules
+crypto: fix memory leak in randomBytes() error path
+handle empty sockets and unknown address family
+Bug #690. Purify memory reference error
+[Bug 2382] Implement LOGTOD using ldexp() instead of shifting
+Don't allow null interfaces
+Fix order of declarations.
+Fix variable names and add macro definition.
+cryptostats cleanup from Dave Mills.
 rbd:free owners when rbd_lock_break timeout
 runner: init tmp handler
 rbd: try to remain cluster's osd op timeout default value
 libtcmu: free ctx in tcmulib_initialize
 fixed local DoS when UnregisterHandler was called for a not existing handler
+secvar: fix endian conversion
 Clean up tabs and a backslash which seemed to have sneeked in in r1.29.
 drm/radeon: update lockup tracking when scheduling in empty ring
 do not allow setting autorepeat delays causing zero timeouts later.
@@ -5915,132 +5445,18 @@ actually use lbuf in getmailname()
 Do not call window_unzoom from window_destroy because it will try to add
 use _exit() in term handler if real signal
 allocate at least as much elements as requested in hashinit
-Initial len for the fmt=NULL case.
-read back from libcrypto RAND when privdropping
-initialise salen in binresvport_sa
-Move ssh-keygen -W handling code to match upstream
-upstream: Always return allocated strings from the kex filtering so
-platform's with openpty don't need pty_release
-set sshpam_ctxt to NULL after free
-upstream: disallow empty incoming filename or ones that refer to the
-make explicit_bzero/memset safe for sz=0
-upstream: another case where a utimes() failure could make scp send
-fix multiple authentication using S/Key w/ privsep
-Don't resend username to PAM; it already has it.
-freezero should check for NULL.
-Avoid more compiler warnings for use of uninitialised variables
-Avoid out-of-bounds read
-For some inexplicable reason, I'd (a) left the debugging irreversibly
-Reject invalid PSS parameters.
-BIO_s_mem() write: Skip early when input length is zero
-Make sure that the 'config' variable is correctly defined and declared
-Fix OOB read in TS_OBJ_print_bio().
-return correct NID for undefined object
-Unauthenticated DH client certificate fix.
-Remove misleading dead code. Constify. (Coverity ID 142)
-Handle NULL parameter in some EVP utility functions.
-Prevent an overflow when trying to print excessively big floats
-Missing OPENSSL_free on error path.
-Don't leak memory on error in b2i_rsa
-Memory leak fix.
-dtls1_heartbeat: check for NULL after allocating s->cert->ctypes
-Follow on from CVE-2014-3571. This fixes the code that was the original source
-Add prototype for null cipher.
-fix potential memory leak when allocation fails
-Make BIO_sock_error return a proper error code when getsockopt fails
-Ensure the whole key_share extension is well formatted
-Fixed incorrect return code handling in ssl3_final_finish_mac
-typo fix on function
-GH1141: Different fix, preferred by Richard.
-Check length of additional input in DRBG generate function.
-Add mask for newly created symlink.
-Revert CFB block length change. Despite what SP800-38a says the input to
-RT4002: check for NULL cipher in p12_crpt.c
-Fix encrypt overflow
-create BN_CTX object
-mark openssl configuration as loaded at end of OPENSSL_config
-Free up s->d1->buffered_app_data.q properly.
-Added error checking for OBJ_create
-bn/bn_gf2m.c: avoid infinite loop wich malformed ECParamters.
-Add entropy sanity check
-Avoid a memory leak in OCSP_parse_url().
-Ignore PKCS1 based sig algs in TLSv1.3
-bio/b_addr.c: resolve HP-UX compiler warnings.
-fix out-of-bounds check in lock_dbg_cb (was too lose to detect all
-Engine afalg: properly set operation type also on big endian.
-Don't free up key in priv_decode.
-Make it possible to disable STORE.
-Make sure the opened directory is closed on exit.
-Updates following review feedback
-In certain cases, no encoding has been set up for the b64 filter. In
-Make rand_add predictable when fuzzing
-Updates from 1.0.0-stable
-Don't feil when indent is 0.
-asn1/t_x509.c: fix serial number print, harmonize with a_int.c.
-Subtract padding from outlen in ct_base64_decode
-Clarify a 'chil' engine param that is a little unintuitive.
-Update from 1.0.0-stable.
-Fix a crash in the asn1parse command
-dev_crypto_md5_update: check result of realloc(md_data->data) and don't leak memory if it fails
-x509: fix double locking problem
-pkey_gost_ctrl: check for NULL after allocating pctx->shared_ukm
-Fix error handling in compute_key, BN_CTX_get can return NULL
-Allow for dso load by explicit path on HP-UX.
-BIO: at the end of BIO_new, declare the BIO inited if no create method present
-p could be uninitialized
-Later, Jeffrey changed his mind. Apparently, GetCursorInfo exists but
-Do not try to use non-existent gmtime_r() on SunOS4.
-Don't allow read/write after fatal error
-Typo: should check mgf1md
-Add some sanity checks when checking CRL scores
-For ecdsa-with-SHA1, as for id-dsa-with-sha1, omit 'parameters'
-Fix memory leak when using PSK session files
-Fix typo in valid_star
-Better handling of verify param id peername field
-Fix a memory leak in tls1_mac
-Avoid negative array index in BIO_debug_callback()
-Free a BIO_ADDR if DTLSv1_listen return <=0
-Additional CVE-2014-0224 protection.
-X509V3_EXT_add_nconf_sk, X509v3_add_ext: fix errors handling
-The previous revision should have generated _more_ warnings, not less ...
-capi_get_key: check for NULL after allocating key
-Fix windows build
-last commit was wrong. Now it works. :)
-Remove an unused variable assignment
-Make BN_mod_inverse a little faster
-Don't free the BIGNUM passed to BN_mpi2bn
-use case-insensitive comparison in set_table_opts
-For TLS 1.3 retrieve previously set certificate index
-Disable some functions in headers with no-ec2m
-use correct function name
-Avoid EADDRINUSE for s_server.
-Ensure that memory allocated for the ticket is freed
-initialise dc variable to satisfy old compilers.
-set auto ecdh parameter selction for Suite B
-Bug fix for 64 bit HP-UX.
-apps/s_socket.c: disable the Nagle algorithm.
-Make TYPE_RSA the default type instead of just setting it when -new is
-Fix ossl_statem_client_max_message_size() for DTLS1_BAD_VER
-make sure we don't write to seed[-1]
-Don't call memcpy with NULL as source
-Fix missing NULL checks in CKE processing
-fix previous modification -- if ssl->cert is NULL, don't follow the pointer.
-In clear_free, clear the complete structure just in case
-X509_VERIFY_PARAM_free: Check param for NULL
-Revert "Avoid duplication."
-Check that async_jobs is not negative and not too high.
-Oops. Missing NULL frees.
-Fix a possible crash in dsa_builtin_paramgen2.
-No use in naming the cblock _; the structure still is incompatible
-Use correct header length in ssl3_send_certifcate_request
-Fix crash in dtls1_get_record whilst in the listen state where you get two
-make pigz work on .spl files, otherwise pigz can't breaks with kiwi
+SOFT: Check the EC Key on C_CreateObject and C_DeriveKey
 [commissioner] add network name length check in GeneratePskc() (#4404)
-Fix install script
-release 2.1.6 : security fix: scrub headers for "AuthType oauth20"
-don't echo query params on invalid requests to redirect URI; closes #212
-fix test and 2.4 error description
-printout support for libjq expressions at startup
+KML: set OAMS_TRADITIONAL_GIS_ORDER for SRS returned on returned layers
+netCDF: avoid buffer overflow. master only. Fixes https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=15143. Credit to OSS Fuzz
+prevent ipv6 stuff from complaining about no addresses in demand mode
+Suppress false error message on PPPoE disconnect
+pppd: Eliminate potential integer overflow in option parsing
+pppd: Fix bounds check in EAP code
+Honour the allow-ip option even with noauth
+revert it to 2.3.6 for now
+Add the declaration of multilink_join_hook, missed in a previous commit.
+Don't include delay field when responding to CBCP req with "NoCallback".
 Merge pull request from GHSA-7fw8-54cv-r7pm
 Merge pull request from GHSA-2qpg-f6wf-w984
 Merge pull request from GHSA-26j7-ww69-c4qj
@@ -6050,118 +5466,341 @@ Merge pull request from GHSA-hvq6-f89p-frvp
 Merge pull request from GHSA-cxwq-5g9x-x7fr
 Merge pull request from GHSA-q9cp-8wcq-7pfr
 Merge pull request from GHSA-wx5m-cj97-4wwg
-Decoder: Initialize first_pb_nal_in_pic for error slices
-Decoder: Fixes an out of bound write in bitstream buffer
-Decoder: Detect change of mbaff flag in SPS
-Decoder: Fixed error handling for dangling fields
-Decoder: Fixed incorrect use of mmco parameters.
-Fixed error concealment when no MBs are decoded in the current pic
-Decoder: Do not conceal slices with invalid SPS/PPS
-Fix in returning end of bitstream error for MBAFF
-Decoder: Fix for handling invalid intra mode
-Fix slice params for interlaced video
-Decoder: Set u1_long_term_reference_flag to 0 for error concealment
-Decoder: Increased allocation and added checks in sei parsing.
-Decoder: Initialize default reference buffers for all pictures
+Fix stack corruption happening in aacDecoder_drcExtractAndMap()
+Fix out of bound memory access in lppTransposer
+Fix possible out of bounds access
 DO NOT MERGE: Add validation for eternal enities
 DO NOT MERGE: Use correct limit for port values
-Fix use-after-free in wifi_cleanup()
-Add guest mode functionality (1/3)
+IOMX: Add buffer range check to emptyBuffer
+MediaPlayerService: avoid invalid static cast
+OMXNodeInstance: sanity check portIndex.
+omx: prevent input port enable/disable for software codecs
+GenericSource: reset mDrmManagerClient when mDataSource is cleared.
+Fix security vulnerability in ICrypto DO NOT MERGE
+Fix integer overflow during MP4 atom processing
+IOMX.cpp uninitialized pointer in BnOMX::onTransact
+Prevent integer overflow when processing covr MPEG4 atoms
+Check for overflow of crypto size
+Fix security vulnerability: Effect command might allow negative indexes
+Fix integer overflow and divide-by-zero
+Add bound checks to utf16_to_utf8
+Fix free-after-use for MediaHTTP
+Don't use sp<>&
+Fix integer overflow when handling MPEG4 tx3g atom
+Check section size when verifying CRC
+Add some sanity checks
+Fix out-of-bounds write
+stagefright: avoid buffer overflow in base64 decoder
+Fix potential overflow
+Add bounds check in SoftAACEncoder2::onQueueFilled()
+DO NOT MERGE - Remove deprecated image defines
+Fix info leak vulnerability of IDrm
+Fix integer underflow in ESDS processing
+IOMX: do not clear buffer if it's allocated by component
+Fix corruption via buffer overflow in mediaserver
+Fix out of bounds access
+MPEG4Extractor.cpp: handle chunk_size > SIZE_MAX
+Also fix out of bounds access for normal read
+IOMX: allow configuration after going to loaded state
+Fix 'potential memory leak' compiler warning.
+SampleIterator: clear members on seekTo error
+SoftAAC2: fix crash on all-zero adts buffer
+Fix initialization of AAC presentation struct
+OMXCodec: check IMemory::pointer() before using allocation
+Check effect command reply size in AudioFlinger
+fix possible overflow in effect wrappers.
+NuPlayerStreamListener: NULL and bounds check before memcpy
+Check mp3 output buffer size
+Camera3Device: Validate template ID
+SampleTable.cpp: Fixed a regression caused by a fix for bug
+Fix information disclosure in mediadrmserver
+Fix build breakage caused by commit
+Fix several ineffective integer overflow checks
+Fix memory leak in OggExtractor
+Resolve a merge issue between lmp and lmp-mr1+
+Check buffer size in useBuffer in software components
+Fix AMR decoder
+Clear unused pointer field when sending across binder
+Fix OMX_IndexParamConsumerUsageBits size check
+Fix edge case when applying id3 unsynchronization
+Fix security vulnerability in libstagefright
+SampleTable: check integer overflow during table alloc
+Fix integer underflow in covr MPEG4 processing
+Prevent integer underflow if size is below 6
 Add guest mode functionality (3/3)
-pppdump: Avoid out-of-range access to packet buffer
+Storing representative subpalette
+Avoided parallel memory allocation race in openmp version
+Protect against int overflow
+Fix integer overflow in rwpng.h (CVE-2016-5735)
+Preserve order of unused colors
 fixed segfault in GIF reading; this fixes https://github.com/pts/sam2p/issues/67
-fix integer overflow in Resample.c
-PCD decoder overruns the shuffle buffer, Fixes #568
-Fix OOB Access on PcxDecode.c
-Fix for buffer overflow in TiffDecode.c CVE-2016-0740
-overflow check for im->linesize
-FLI overflow error fix and testcase CVE-2016-0775
-Catch PCX P mode buffer overrun
-Catch FLI buffer overrun
-move checks before mallocs to prevent memory leaks
-PCD decoder overruns the shuffle buffer, Fixes #568
-cache hasAlpha for ImagingUnsharpMask
 bpo-36495: Fix two out-of-bounds array reads (GH-12641)
-lib: fix memory logging
-lib, stream: fix stream sanity checks
-bgpd: fix memory leak when deleting a community
-babeld: state-file was loaded too early. Initial seqno too.
-bgpd: Addition of ipv6 network command in Multicast address family mode.
-ospf6d: don't run DR election early on "ipv6 ospf6 priority"
-[bgpd] 64-bit bugfix in community_del_val by Jeremy Jackson <jerj@coplanar.net>
-ospf6d: fix off-by-one on display of spf reasons
-Fix _netlink_route_debug message
-[bgpd] Restore ability of 'neighbor ... update-source' to take interface name
-bgpd: prevent double address delete on shutdown
-ospfd: fix packet reception for FreeBSD 10.
-bgpd: Ignore stale entry candidates during bestpath selection.
-bgpd: Remove unused and leaking code
-zebra: stack overrun in IPv6 RA receive code (CVE-2016-1245)
-2003-11-17 Hasso Tepper <hasso@estpak.ee>
-pimd: Fix size_t zlog_err format string warning
-Fix heap OOB read in macho.iterate_chained_fixups ##crash
-Fix oobread crash in java parser ##crash
-Fix oobread and unaligned casts in the NE entrypoint logic ##crash
-Redo minor cleanup in new_rbtree
-Fix null deref in the ne parser ##crash
-Fix integer overflow in string search causing oobread ##crash
-Fix oobread bug in NE parser ##crash
-Fix oobread in dyldcache ##crash
-Fix use-after-free in iobank rbtree usage ##io
-Fix null deref in ne parser ##crash
-Fix segfault in adf (#16230)
-fix segfault when bin->symbols is NULL #21503
-Fix null deref in bin.symbols ##crash
-More fixes for the CVE-2019-14745
-Fix #18666 - uaf in python bin parser
-Fix UAF in `aaef` ##crash
-Fix null deref in io.bank ##crash
-Fix bins/*/rep8 - UAF crash in pyc parser ##crash
-Fix oobread segfault in java arith8.class ##crash
-Fix #18667 - division by zero in the macho parser ##bin
-Fix oobread in macho core symbolication ##crash
-Fix null deref in macho parser ##crash
-Fix UAF in aaaa on arm/thumb switching ##crash
-Fix integer overflow in fuzzed dwarf rendering in graphs ##crash
-Prefer memleak over usaf in io.bank's rbtree bug ##crash
-Fix another oobread segfault in the NE bin parser ##crash
-Fix heap buffer overflow in dyldcache parser ##crash
-Fix oobread in the macho parser ##crash
-Fix #16303 - c->table_query double free (#16318)
-Fix unmatched array length in core_java.c (issue #16304) (#16313)
-Fix negative index in anal.arm64.cs ##crash
-Fix #10465 - Avoid string on low addresses (workaround) for corrupted dwarf (#10478)
-Fix oobread in symbols header parsing ##bin
-Fix #14990 - multiple quoted command parsing issue ##core
-Fix #12417/#12418 (arm assembler heap overflows)
+Detect recursion loops resolving objects (fixes #51)
+Pl_PNGFilter: disallow columns = 0
+Fix infinite loop in QPDFWriter (fixes #143)
+Detect xref pointer infinite loop (fixes #149)
+Fix non closing on readline failure (windows)
+take bits "wildcard" into account in r_bp_size (#8994)
+Memleak in RAnalVar
+Fix CID 1134848
+drx.c: Range check on drx_set(..., n, ...) off by one
+Fix crash in anal.avr
+Fixes for rcons_push/pop
+Disable self:// in sandbox mode
+~? shows help
+Fix r2 -hh
+Fix memleak in r_reg_free
+A bit better thumb pseudo decompile and analysis
+Fix CID 1134860
+PE: fix buffer overflow regression caused by the fix for #64 (fcbe3ca).
+Fixed crash in elf.c with 32bit r2 when shdr->sh_size > max size_t
+Add P- command to delete projects (currently with Pd) (#7064)
+Fix uninitialized partition type issue in 'mp gpt'
+Do not fail if vFile:fstat is not implemented on the remote side
+Fix crash in dex parser
+Unescape 'c' string and properly handle the length
+Fix CID 1214306
+Fix some more out of buffer accesses in the java class parser
+Fix a memleak
+Fix #8141 - Add missing afv-
+Fix oob read in prefixline and oob write in r_cons_canvas_write
+Fix RPrint.strconv_mode memleak
+Hack for #3143 - Please Test
+Fix #9904 - crash in r2_hoobr_r_read_le32 (over 9000 entrypoints) and read_le oobread (#9923)
+Fix for crypto.cps2
+Fix #8685 - Crash in ELF version parsing
+Fix #10296 - Heap out of bounds read in java_switch_op()
+Fix #647 - Cant found function twice
+Fix #5524 - Add 'F' and '_' in graph
+Oops for 'dk'
+Fix riscv infinite analysis issue
+Fix invalid free in RAnal.avr
+updated warning message in dwarf
+Better support for symbol demangling
+Typo Exapmle => Example
+fix memory leak
+Fix CID 1134968
+Add key in visual mode to toggle asm.pseudo Fix #2914
+Fix CID 1135019
+Fix memleak in /P
+Improve linked list display in pf
+Fix CID 1215262
+bin: Delete the list of objs instead of deleting current object
+Fix regression with undefined behaviour
+add help for /c/j and /c/ one;two
+Fix io.cache oob read bug?
+Fix #9902 - Fix oobread in RBin.string_scan_range
+Fix #2294 - blocksize is too big in `pf`
+Fix #8743 - Crash in ELF version parser on 32bit systems
+Fix a invalid read of size 4 in rcc_context
+Aim to fix negative memcpy issue in rparse
+Refix segfault/infinite loop
+Bring -w- to malloc temporary
+fixed crash on cmask due bad args (#7188)
+Fix memleak in esil for x86.cs
+Fix zlul crash in sdb
+make r_sys_truncate() obey to sandbox mode (#5594)
+Fix out-of-bounds read in rtr.c (#8468)
+Fix #11352 - slow esil emulation visual panel
+check malloc return for code in rabin2.c
+Fixed SPM page size
+Added esil break on invalid instruction variable
+Avoid null deref in info->arch
+Fix CID 1211145
+Fixed cases where hash+space in quoted string is treated as comment
+Fix tmpstring memleak in tab
+Do not extract non-fat binaries
+Fix invalid free in r_fs_free
+x86.cs: identify PUSH vs UPUSH
+Fix CID 1134508
+Fix a memleak
+correcting Resource leak
+Fix div by 0 in r_print_portionbar
+Add mips esil sltiu
+Fix symbol list on some MACH0 files
+added NULL check and memory leak fixed in libr/util/w32-sys.c
+ARC: print numbers in hex, don't use 0x prefix if the number is in [0..9]
+Fix grub warnings
+Fix #8764 - huge vd_aux caused pointer wraparound
+Fix an one-byte buffer overflow in string_scan_range
+Remove noisy printf
+Honor io.raw in new io. All debuggers fail in the same way
+Fix #11227 - Fix another clusterfuzz crash (#11291)
+Fix #12239 - crash in the x86.nz assembler ##asm (#12252)
+Fix null deref in aftm
+core/cmd_anal: fix base64 body for 'agn' command
+core/graph: free RGraphEdges when freeing long_edges list
+Fix CID #1134983
+Fix a gcc warning
+format/zimg: make sure there are enough bytes in the buffer
+Change default syscall ahi S
+Implement support to encode 'dex [16bitreg]' in x86.nz
+Show RAnalOp.id in ao
+Update sdb from git to fix some memleaks in sdb_query()
+Quick fix out for x86.nz assembler
+Use r_io_desc api insted to dereference pointers
+Fix invalid pointer dereference in classname field of RBinSymbol
+core/cmd_anal: accept base64 body for 'agn'
+Fix RCons crash on w32 (thanks Skuater for pointing out!)
+add warning to zos command (#8585)
+Fix #6829 oob write because of using wrong struct
+Fix crash a84c559 by revskills
+fix register get in dbg on BSD s/pc/PC
+Fix softmagic crash in PE bin (reported by @daniel-rome)
+* Fix segfault in r_core_read_at
+Use RBinSection instead of RIOSection for virtual tables
+r_lib_close: close all the plugins when freeing, not just the first
+Fix #9903 - oobread in RAnal.sh
+riscv: Return actual instruction length
+Fix #7152 - Null deref in cms
+Fix #1816 - Fixed another crash in rpnesil reported by zlul
+Fix TE section name issue again
+Always build ds->opstr before comment (#7196)
+arm asm.pseudo supports asm.varsub_only for fp (#10074)
+Fix #7872 - Crash in disasm
+Add help for 'afo'
+Fix some gcc warnings
+Resource leaks fixes CID 1134987
+Support function pointer in struct with ts
+Resotre hook_mem_write when asm.emu activated
+Fix CID 135284
+Fix #3040 - show error when '. file' not found
+Fix CID 1134996, 1135005, 1135002, 1134993
+Fix CID 1214583
+Fix segfault in ELF parsing
+Fix analysis with afu
+fix two uaf in anal.c
+Swap esil if, avoid } being pushed
+Honor io.0xff (#8557)
+Fix #3364 - restore blocksize after p
+Fixed unreleased lock in r_core_cmd
+Check zoomsz value
+Remove other damn stray :(
+Drop max file size to make `rabin2 -zzz` happy
+Fix #10293 - Use-after-free in r_anal_bb_free()
+Fix two covertities
+Fix CID #1134975
+Fix #1937 - Fix flag sorting order
+* Fix null pointer issue related to r_syscall and r_core
+Fix mach0 segment name size (#10216)
+Fix #10865 - hang_06 - Skip invalid cfstring sections
+Fix 64bit lea instruction in nz (#7795)
+Detect local variables in Dalvik code analysis
+Fix #12372 and #12373 - Crash in x86 assembler (#12380)
+Fix #9943 - Invalid free on RAnal.avr
+Revert "Fix #7315 - "ahi s" regression"
+Handle LC_MAIN in MACH0 to get entrypoint
+Fixes slow vmenu pds (#10158)
+Fix CID 1134974
+CID 1134732 Out-of-bounds access /libr/asm/arch/avr/format.c
+prevent a possible double-free
+Fix #8573 - Detect D's main
+Set TCP_NODELAY on client TCP sockets
+Fix #6836 - oob write in dex
+Add help to `/c`
+Corrected a condition on the first op
+Fix oob read in ragg2
+Fix oobread in avr
+Truncate strings to their field size
+Fix small memory leak (#8910)
+debug_gdb: handle null return value from gdbr_read_registers
+Fix r2 -H RHOMEDIR
+Disable =* commands to create tasks. Related to #10515
+Fixing the breakpoint callback signature. (#10998)
+Fix malloc(0) issue in /c
+Fix more coverities
+Update bin info for binfile being set in the environment
+Fix #10294 - crash in r2_hoobr__6502_op
+Check if debug is dead in r_debug_kill function.
+Fix CID 1134993, 1135005, 1135004, 1134996, 1134995, 1135002
+Fix infinite loop in p- with r2 --
+Fix variable name/type swap on command print. fixes #2844
+convert negative fp numbers to hex and add static assert macro
+Fix r2_hbo_grub_memmove ext2 crash
+Fix CID 1171363
+fix oob in dex
+8051: fix esil for mov direct,direct (#9207)
+Fix #8731 - Crash in ELF parser with negative 32bit number
+Fix tk fflush issue for /t webui
+versioninfo: Fix SEGV on files with no info (.txt, ...)
+Fix #3369 - omf parser crash
+Show only regs with size = asm.bits in drr
+Fix CID 1338307
+Fix #6914 - oobread in PE
+Stop function analysis at jump
+Another capstone-m68k workaround to make r2 happy
+Add extra checks to zign deserialization
+Make breakpoints at offset 0 work
+Fix #5997 - Do not permit xrefs on invalid addresses
+Fix CID 1134727
+Fix #222 - Malformed ARM ELF causes segfault
+Fix #10091 - crash in AVR analysis
+Add new opcodes to anal_x86_udis86
+Fix #4686 - Segfault in ELF parser
+Fix #8764 differently since ptr diff might not fit in ptrdiff_t
+Fix crash in bins/fuzzed/r2_nullptr_r_x509_parse_crl
+Fix #8748 - Fix oobread on string search
+Avoid binloading from UT64_MAX length
+Fix #804 again - regression introduced by deprecating rcorefile
+Fix racy set of asm.cpu and asm.arch
+fix hang in version info ELF
+Fix ns-free null deref
+Add /O command
+Fix #10596 - oobread in java parser
+add the correct magic for z64
+Fix crash for rabin2 -c pe
+Fix #12376 - crash in: rasm2 -a arm -b 64 '0 ,0,0,0,0,0,0,'
+Fix #4004 - support xor r8-r15 in the x86.nz assembler
+Fix: memory leak when R_DEBUG is set
+Fix r2 -i.. segfault
+Fix #1850 - Call cmd.hit on /m
+Fix regression in asm.leahints
+Update to use latest rabin2 -p from r2 -t
+Fix 4b85cff3312965cc7d7a38943cfa06373cef41f9 util.calc regression
 Fix #10464 - oobread crash in mdmp (#10683)
-Fix oobread in java parser ##crash
-Fix null deref in xnu.kernelcache ##crash
-Correct documentation about default_pbe
-Add BOTAN_UNUSED when relevant OS support is missing
-New way of specifying key lengths
-Avoid null pointer deref if key was not set in AES
-Take version from pending state for creating cipher spec
-Allow the creation of 48 bit primes
-Add static_cast in uint8_t vs enum comparison.
-Drop the DH group check to a weaker version of the checks
-Avoid trying to use GCC's cpuid.h in versions where it doesn't exist
-Make set_global_state a little more elegant, by having it delete
-Change default userid for SM2 signatures.
-Remove extraneous check in low_zero_bits
-Fix zlib macro check
-Check minimum arguments and print help
-A typo in a macro check in bswap.h meant inline asm bswap was not
-Fix an off by 8
-Fix two declarations that were incorrect.
-Fix compile error
-Fix error - testing input file instead of output file
-Add check for out of range DH keys
-Fix heap corruption: bitmap_size is in bits, not bytes.
-Fix root directory creation: EOD entry was missing.
-Enable write in libexfat.
-Update volume label in struct exfat on exfat_set_label().
-Add FUSE debug option (-d).
+Fix #12242 - Crash in x86.nz assembler (#12266)
+Fix pdf on folded function issue
+Fix CID 1134839
+* Fix negative blocksize and printidx issues in visual
+Don't forget offset for scale*index w/o base
+Fix memleak in aat (#11257)
+Handle cfg.debug in dso command
+fix memleak in elf.c
+Fix anoying warn msg in disasm
+Fix #7698 - UAF in r_config_set when loading a dex
+Implement ?vx command
+Fix #8764 a 3rd time since 2nd time is UB and can be optimized away
+Small windows debug fix
+Add Visual browser for process threads
+Fix CID 1108023
+Changed a malloc to g_malloc
+Not destroying file chooser dialog before we have finished using it
+Allowing arguments of rs_cache_load_quick() to be NULL.
+freeing filetype_str when not needed anymore.
+Fixed leak in batch_queue_save().
+Check size of TIFF images before reading them.
+Fixed camera WB for Nikon D7100.
+Applied patch from Edouard Gomez for fixing non-MMX loading.
+Now using rs_image16_get_pixel() in rs_render_pixel_to_srgb().
+Fixed shift in rs_load_raw_from_memory().
+Changed rs_cache_load() to return gboolean.
+Add safeguards for recieving empty size responses.
+Added some errorchecking in rs_set_warmth_auto().
+Fixed Sony decryption for newer compilers.
+Changed fixed hight of iconbox from 140 to 160. It now fits icons and text.
+Stop rs_output_get_parameter_widget() from leaking.
+Fixed bug #119 (auto/camera WB fails when tint hasn't been changed)
+Nikon D5100 WB.
+Avoid overflow in ljpeg_start().
+Added some sanity checking in gui_drawingarea_motion_callback().
+Made paste defualt to all settings.
+Changed rs_cms_get_transform() to return NULL if CMS is disabled.
+Add Nikon D800(E) WB support.
+Removed leak in rs-facebook-client.c.
+Now always initializing rsi->image in rs_image8_new().
+Fixed bug with upscaling. upscaling now enabled in interface.
+Fixed stupid multiply bug in rs_load_raw_from_memory().
+Adding tailing / after directories ... needed for expanding tree.
 fix oob read on luac
 fix #2969 - oob write (1 byte) in dex.c
 Fix oob write in dyldcache
@@ -6285,89 +5924,214 @@ make UBSan not complain about questionable OS lib function
 Address off-by-one issues introduced in f3bd7a2 resulting in extra whitespace in property expansions
 zeromq: code cleanup
 mmanon: use new errmsg interface
-Fix check for VCF record size
-Remove legacy workaround for parsing modulo operator
+enumerator.c: adjust indent
+readline.c: fix type
+suppress unused argument warning
+bigdecimal.c: expand buffer
+comma at the end of enum is a C99ism
+warning: no indirect flag
+* ext/dl/dl.c (rb_dlhandle_initialize): prohibits DL::dlopen
+win32/win32.c (rb_win32_stat): add "." to buf1 only if it has a drive letter.
+fix typo: s/POWOR/POWER/
+get rid of strcat
+reduce rb_mutex_t size from 80 bytes to 72 bytes on 64-bit
+* ext/stringio/stringio.c (strio_substr): Trivial fix for invalid
+non-constant aggregate initializer is a C99ism
+string.c: fix one-off bug
+st.c: fix num_entries
+tkutil.c: fix out-of-bounds access
+should use `th`.
+ext/zlib/zlib.c: initialize return value
+Fix StartTLS stripping vulnerability
+* gc.c (HEAP_OBJ_LIMIT): suppress narrowing down warning from gcc 4.2.
+vm_core.h: Increase the Fiber stack size on powerpc64
+string.c: shrink too big buffer
+ext/syck/handler.c (syck_hdlr_add_alias): add cast to avoid warning.
+compile.c (struct ibf_object_*): Use FLEX_ARY_LEN
+thread_sync.c (condvar_ptr): reset fork_gen after forking
+win32.c: fix for mingw
+add experimental API.
+backward.h: adjusted NORETURN declaration
+* vm_eval.c (rescue_funcall_args): th->ec
+Comment out unused lines.
+string.c: fix integer overflow
+Additional fix for r30736
+* win32/win32.c, include/ruby/win32.h (rb_w32_has_cancel_io): new
+Avoid illegal memory access problem with 1 color paletted png(#73),
 Remove unused out-of-bounds memory access from MTM loader (#249)
+Improve input validation for some parameters having a too small
 transport/server.cc: Return correct size of decompressed lz4 buffer
-remove some logs
-refine addr_header comparison
-ignore all SIGPIPE
-do not allow zip files to have upward relative path sections
+sestatus: free process and file contexts which are checked
+policycoreutils: semodule_package: do not fail with an empty fc file
+libselinux: asprintf return code must be checked
+libsepol/cil: Destroy classperm list when resetting map perms
+libsepol/cil: fix aliasactual resolution errors
+checkpolicy: fix memory leaks in genfscon statements parsing
+checkpolicy: do not leak memory when a class is not found in an avrule
+libselinux: fix audit2why error handling if SELinux is disabled.
+Unchecked input leades to integer underflow
+libsepol: fix use-after-free in sepol_user_clone()
+libsepol/cil: cil_reset_classperms_set() should not reset classpermission
+libsemanage: use after free in python bindings
+libsepol: propagate calloc() failure
+libsepol/cil: Destroy classperms list when resetting classpermission
+libsepol: sepol_av_to_string: clear static buffer
 cmd/snap-confine: chown private /tmp parent to root.root
-Return null if no charset matches
-Fix memory leak by properly closing `charsetDetector`
 in CMsgURLRequest::setContent(): append parameters with value empty string
 - in CXMLReader::CXMLReader() and CXMLReader::moveToAttribute(): check if the parameter was NULL
 in CActPrint::takeAction(): fixed print publication [field] bug
 in CActions::takeAction(): check if the result of the query was not null
-Fix VD-1301 and VD-1302 vulnerabilities
-modbus_reply: fix copy & paste error in sanity check (fixes #614)
+Fixed: chuck null pointer when unknown CT is sent and over in-memory limit
+Avoid double close() for multipart file descriptors
+Fixed check if ip_strv is NULL
+Fixed log_escape_raw when length was <= 0
+Cleanup message output. See #16.
+Fix Chunked string case sensitive issue - CVE-2013-5705
+swtpm: Check header size indicator against expected size (CID 375869)
+error on out-of-range cpb_cnt_minus1 (oss-fuzz issue 27590)
 Detect non-existing referenced alpha images (fixes #123)
 Handle case where referenced "iref" box doesn't exist (fixes #138).
 basic/unit-name: do not use strdupa() on a path
 basic/unit-name: do not use strdupa() on a path
 basic/unit-name: do not use strdupa() on a path
 basic/unit-name: do not use strdupa() on a path
+Make temporary directory safely when ~/.w3m is unwritable
+Fix uninitialised values for <i> and <dd>
+Prevent invalid columnPos() call in formUpdateBuffer()
+Prevent negative indent value in feed_table_block_tag()
+Fix potential heap buffer corruption due to Strgrow
+Don't crash if crypt() fails.
+Calculate the reply payload length in a local variable.
+Fix some format warnings.
 [Bugfix] Render "Ok" and "Cancel" button correctly when compiled with GNUTLS.
 [Bugfix] Make windows viewer compilable via migw32 (4.3 series)
+Force tor_malloc(0) to always be sane
+r18233@catbus: nickm | 2008-02-19 18:46:07 -0500
+better log line for debugging #26485
+Harmless: Z_OK is not an acceptable answer to Z_FINISH.
+Fix log-uninitialized-stack bug in rend_service_intro_established.
+r15723@tombo: nickm | 2007-12-26 19:25:51 -0500
+Fix a couple more places where we use ->new_address without checking that it is there.
+a potential fix for bug 641.
+Fix a potentially useless integer overflow check.
+Go into soft hibernation after 95% of the bandwidth is used,
+Add an extra warning message to check_private_dir
+fix crash introduced in r9622
+be safe: if you got a resolvefailed end cell but you're not an AP, bail.
+Fix null dereference on key setup error.
+Try to untangle the logic in server_port_flush
+Fix a signed/unsigned warning on 32-bit
+clean up a log message
+Fix an off-by-one buffer size in dirserv.c that magically never hit our
+allow unauth control connections for now
+make tor-resolve print the Tor version on --version too
+Add a missing return -1
+Accept small hops backward in the monotonic timer.
+don't whine about reachability if the guy is hibernating now.
+Clean up my 1776 fix a bit
+fix a memory leak
+r18294@catbus: nickm | 2008-02-20 22:42:44 -0500
+special case so we don't yell when an empty http body doesn't specify a
+Add explicit check for !first_conn in ...resume_edge_reading_helper
+r13071@catbus: nickm | 2007-05-29 15:54:46 -0400
+if it's not less than three does that mean it's more than two?
+Don't make $hexid nicknames persistent.
+TROVE-2017-005: Fix assertion failure in connection_edge_process_relay_cell
+I *knew* something was wrong here. Flip some comparison operators and make download-rate-limiting sane again.
+mark the helper node as down if we time-out on the circuit handshake
+Make the return value of tor_addr_sockaddr always be signed
+Adjust straggling users of payload field
+prop224: Fix memleak in client_get_random_intro().
+Memory leak on error in connection_or_compute_auth_cell_body. CID 1301372
+Minor code readability fix.
+make options->RedirectExit work again; resolve bug 293.
+Don't schedule excess_renegotiations_callback unless it's set
+Stop requiring newline at end of exit policy.
+mozilla actually cares about the reply version
+Tweaks on last process-launch patches
+Don't put unreachable IPv6 OR port in routerstatus.
+when they use tor as an http proxy, point them at a better url
+Generate our x509 certificates using sha256, not sha1.
+fix a minor memory leak if we start up as a relay but don't
+Treat empty introduction points sections as missing.
+Eat all whitespace after a control command
+take back half of my bugfix. comparing times sucks.
+make the os x tiger compiler shut up
+spell recommended correctly
+fix duplicate dns_cancel_pending_resolve reported by Giorgos Pallas
+Fix a check-spaces complaint
+Make all begindir or one-hop circuits internal
+Bridges are always dirs
+bugfixes: smartlist_join_strings2() was underflowing a size_t
+Fix typos in a few log messages
+Add header for tor_tls_log_one_error
+strdup the intro point when you pick it, so you
+Fix a double-free in rend_config_services()
+Fix bug with tor_memmem finding a match at the end of the string.
+r19249@catbus: nickm | 2008-04-08 14:04:02 -0400
+Fix a NULL pointer dereference in parse_server_transport_line().
+fix memory leak introduced in 26e89742
+and don't try to build the descriptor every second, if it's dirty
+clarify why strlcpy is safe in truncated log messages
+r11753@Kushana: nickm | 2006-12-29 11:30:28 -0500
+Fix another memory leak
+Add a comment and a check for why flag indices will be <= 63
+Treat a bad tor_spawn_background() as a BUG().
+r7341@Kushana: nickm | 2006-08-11 00:51:05 -0700
+Fix resource leak in parse_consensus_request()
+Record the time at which each intro point was first published
+Simply geoip_get_country_by_addr based on arma's comment.
+only pick a default nickname if you're a server
+Fix memory leaks in hs_descriptor/decode_descriptor and in encode_enc_key()
+we were leaking 3KB every time the entry guards changed, every time
+Fix not-freed-on-exit event
+Oct 19 13:27:24.391 [info] router_reload_networkstatus(): Skipping cached-status file with unexpected name "."
+Fix memory leak in client_likes_consensus().
+fix another underflow in keeping stats
+Put braces around reject-lines for IPv6 addrs
+fix a seg fault with exitredirect
+Add error message for exit_node in hs_circ_send_introduce1()
+Stop answering "end" with "end"
+Fix an unused-variable warning
+print a statement when the first circ is finished,
+Convert rendmid.c to channel_t
+setuid to User _before_ complaining about running as root
+fix assert: stop trying to send a socks reply to an *exit*
+r8682@Kushana: nickm | 2006-08-29 17:58:59 -0400
+Fix Heap Buffer Overflow in function color_cmyk_to_rgb
+fix unchecked integer multiplication overflow
+opj_getopt.c: avoid crash on invalid input (#301)
+Fix resource leak
+Input file format bug fixed
+[trunk] removed some warnings when building src/bin/jp2/convert.c
+[git/2.1 regression] Fix opj_write_tile() failure when numresolutions=1
+convertbmp: detect invalid file dimensions early
+Fix division by zero
+Fix potential use-after-free in opj_j2k_write_mco function
+Fix heap-buffer-overflow in color_esycc_to_rgb (#748)
+Encoder: grow buffer size in opj_tcd_code_block_enc_allocate_data() to avoid write heap buffer overflow in opj_mqc_flush (#982)
+Change test in opj_tcd_makelayer
+bmp_read_info_header(): reject bmp files with biBitCount == 0 (#983)
+[trunk] rename deprecated macro with opj_ prefix and use it for opj_stream_destroy function
+Fix an integer overflow issue (#809)
+opj_mj2_extract: Check provided output prefix for length
+[trunk] added a warning when tif conversion changes input image bitdepth
+pgxtoimage(): fix write stack buffer overflow (#997)
+Cast to size_t before multiplication
+[trunk] Really apply r2460 this time, but fix the original typo in the submitted patch
 Don't use abstract Unix domain sockets
 ICU-20246 Fixing another integer overflow in number parsing.
-Fix wrong offset used in split_region
-- Show operator login name to other operators when whoising a local operator. (#2301)
-blah. enough small things now.
-Use P_EWORKING in connect().
-Fix 'MODE yournick +r' being interpreted as 'MODE yournick +s' (#4846).
-If you had an unknown link::someunknownitem then UnrealIRCd would not
-Windows: terminate more aggressively when you close UnrealIRCd.
-Fix AUTHENTICATE bug
+Add HTTP verb OPTIONS (#419)
+Don't inflate more than ~16mb, drop connection on inflate error
+fix a bug about multiple errors emitted for one connection (#652)
+Set SO_REUSEADDR before bind.
 Tweak pointer math to avoid possible integer overflow
 WindowsServiceControl: quote service binary path
-fix fname leaks
-show errno reason in freshclam on failure (bb #923)
-fix previous commit
-bb11946 - check that tar checksum is within bounds. Patch supplied by Suleman Ali.
-fix minor leak
-fix NULL dereference when running with a limited db
-fixed CID 11651
-bytecode_vm.c: fix compiler warning and reduce debug verbosity.
-return with CL_EFORMAT instead of CL_EDSIG
-libclamav: dmg tweaks
-Add missing newline character to debug message string
-Put curl_slist_free_all after curl_easy_cleanup
-bb11797 - fix invalid read in fuzzed mail file.
-gotta love brackets
-fix typo in uuencode
-clamdtop: skip blinking if getyx() fails
-c4w: error path engine leak
-bb11446 - adding check for compressed input stream
-fix CID# 10540
-cid 12207 - fix error state for allocating altstr container
-vba: grab length after middle test
-bb1636 - utf-16be detection
-cid 10776 - fix double free
-fixing small memory leak.
-bb11442 - adding explicit wwunpack oob checks
-fix write() on a file desriptor of -1, bb#5784
-fucking nasty fmap bug - i now actually overmap the pages i'm sposed to
-sigopts: fixed incorrect checks for AC_WORD_MARKER_RIGHT
-Reenable JIT selfcheck.
-bb#11514 - check packSizes prior to dereference
-bb #7002: safely handle hook_lsig_matches across pre-scan callbacks
-bb19798 - fix out of bound memory access for crafted wwunpack file.
-cid #10403 follow-up
-bb11260: fix compile error when './configure --disable-pthreads' is specified.
-correct utf16le check
-fix CID# 10534
-fix dumping of javascript in pdf
-cid 12123 - fix error state in allocating memory in pdf finalize
 Fix out-of-bounds array access when passing a <4 byte input file to wavm or wavm-compile
 Spit out definition of YY_CHAR early
 complete john millaway's reentrant patch
 do_stdinit now defaults to false
-call va_end *before* potentially throwing an exception
-fix accidently reverted code
-pass the UDI up if existant
-Shorten long parameters in the backtrace.
+Fix wolfmqtt-fuzzer: Null-dereference WRITE in MqttProps_Free
 Fix usage layout of first version
 Fix buffer size checking
 Fix handling of oversize writes
@@ -6379,28 +6143,9 @@ Fix a few logic reversals
 Fix off-by-one in exptrim
 Ignore SIGCHLD rather than blocking it
 r287: Fixes from Tefnet <developers@tefnet.pl>
+Problem: ZMTP v1 static allocator is needlessly resized
 issue 10 - zmq_strerror problem on Windows
 Cancel pending timers when decoder for PGM stalls
 Fix memory leak in bind()
 ZMQII-43: Race condition when writing to pipe
-Fix null pointer dereference in echo-message
-Bring back the smileys - part II
-Fix NULL pointer dereference in webadmin.
-Support compiling python modules in cwd
-Watch: Add timestamps to the cached messages
-Only allow admins to load the shell module
-Fix wrong English text, close #1465
-Clear out listen host if not specified
-Add some proper cleanup to some places in main()
-Check for all module types on startup.
-Don't let web skin name ../../../../ access files outside of usual skins directories.
-Don't let attackers inject rogue values into znc.conf
-flooddetach: add nick changes - close #941
-We now trim all leading and trailing spaces from parameter values passed
-Update error message about --datadir
-Better cleanup lines coming from network.
-Fix: Converted raw string include NULL character in charset module
-Ask SSL clients for a ssl cert
-Don't make backup of znc.conf readable by everyone.
-CUser::AddCTCPReply(): Reject CTCP requests containing spaces
-Added ToString() overloads for char and unsigned char
+Fixed a segfault bug in the repr of extension class methods.

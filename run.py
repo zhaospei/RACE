@@ -29,11 +29,11 @@ import numpy as np
 import sys
 import multiprocessing
 import time
-if sys.stderr.isatty():
-    from tqdm import tqdm
-else:
-    def tqdm(iterable, **kwargs):
-        return iterable
+# if sys.stderr.isatty():
+from tqdm import tqdm
+# else:
+#     def tqdm(iterable, **kwargs):
+#         return iterable
 import torch
 from torch.utils.tensorboard import SummaryWriter
 from torch.utils.data import DataLoader, SequentialSampler, RandomSampler
@@ -60,7 +60,7 @@ logger = logging.getLogger(__name__)
 
 
 sys.path.append("data/commit_msg")
-from util import REPLACE, REPLACE_OLD, REPLACE_NEW,REPLACE_END,INSERT,INSERT_OLD,INSERT_NEW ,INSERT_END,DELETE,DELETE_END,KEEP,KEEP_END
+from util import FILE_ADD, FILE_DELETE, FILE_END, REPLACE, REPLACE_OLD, REPLACE_NEW,REPLACE_END,INSERT,INSERT_OLD,INSERT_NEW ,INSERT_END,DELETE,DELETE_END,KEEP,KEEP_END
 
 
 
@@ -245,7 +245,9 @@ def build_or_load_gen_model(args):
     tokenizer = tokenizer_class.from_pretrained(args.tokenizer_name)
     model = model_class.from_pretrained(args.model_name_or_path)
 
-    special_tokens_dict = {'additional_special_tokens': [REPLACE, REPLACE_OLD, REPLACE_NEW,REPLACE_END,INSERT,INSERT_OLD,INSERT_NEW ,INSERT_END,DELETE,DELETE_END,KEEP,KEEP_END]}
+    # special_tokens_dict = {'additional_special_tokens': [REPLACE, REPLACE_OLD, REPLACE_NEW,REPLACE_END,INSERT,INSERT_OLD,INSERT_NEW ,INSERT_END,DELETE,DELETE_END,KEEP,KEEP_END]}
+    special_tokens_dict = {'additional_special_tokens': [FILE_ADD, FILE_DELETE, FILE_END,INSERT ,INSERT_END,DELETE,DELETE_END,KEEP,KEEP_END]}
+
     logger.info("adding new token %s"%str(special_tokens_dict))
     num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
     model.resize_token_embeddings(len(tokenizer))
@@ -378,10 +380,10 @@ def main(args):
                     scheduler.step()
                     global_step += 1
                     train_loss = round(tr_loss * args.gradient_accumulation_steps / (nb_tr_steps + 1), 4)
-                    if sys.stderr.isatty():
-                        bar.set_description("[{}] Train loss {}".format(cur_epoch, round(train_loss, 3)))
-                if (step+1)% args.eval_frequency ==0 and (not sys.stderr.isatty()):
-                    logger.info("epoch {} loss {}".format(cur_epoch,train_loss))
+                    # if sys.stderr.isatty():
+                    bar.set_description("[{}] Train loss {}".format(cur_epoch, round(train_loss, 3)))
+                # if (step+1)% args.eval_frequency ==0 and (not sys.stderr.isatty()):
+                #     logger.info("epoch {} loss {}".format(cur_epoch,train_loss))
             if args.do_eval:
                 eval_examples, eval_data = load_and_cache_commit_data(args, args.dev_filename, pool, tokenizer, 'dev',
                                                                     only_src=True,  is_sample=args.debug)
@@ -720,10 +722,10 @@ def ECMG(args):
                     scheduler.step()
                     global_step += 1
                     train_loss = round(tr_loss * args.gradient_accumulation_steps / (nb_tr_steps + 1), 4)
-                    if sys.stderr.isatty():
-                        bar.set_description("[{}] Train loss {}".format(cur_epoch, round(train_loss, 3)))
-                if (step+1)% args.eval_frequency ==0 and (not sys.stderr.isatty()):
-                    logger.info("epoch {} loss {}".format(cur_epoch,train_loss))
+                    # if sys.stderr.isatty():
+                    bar.set_description("[{}] Train loss {}".format(cur_epoch, round(train_loss, 3)))
+                # if (step+1)% args.eval_frequency ==0 and (not sys.stderr.isatty()):
+                #     logger.info("epoch {} loss {}".format(cur_epoch,train_loss))
             if args.do_eval:
                 # eval_examples, eval_data = load_and_cache_commit_data(args, args.dev_filename, pool, tokenizer, 'dev',
                 #                                                     only_src=True,  is_sample=args.debug)

@@ -17,13 +17,13 @@ logger = logging.getLogger(__name__)
 def parse_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--diff_filename", default="CMG-data/cmg.valid.diff", type=str,
+    parser.add_argument("--diff_filename", default="../CMG-data/cmg.valid.diff", type=str,
                         help="The diff filename.")
-    parser.add_argument("--msg_filename", default="CMG-data/cmg.valid.msg", type=str,
+    parser.add_argument("--msg_filename", default="../CMG-data/cmg.valid.msg", type=str,
                         help="The msg filename.")
-    parser.add_argument("--lang_filename", default="CMG-data/cmg.valid.lang", type=str,
+    parser.add_argument("--lang_filename", default="../CMG-data/cmg.valid.lang", type=str,
                         help="The lang filename.")
-    parser.add_argument("--output_dir",  type=str, default="data_processing/saved_process",
+    parser.add_argument("--output_dir",  type=str, default="./saved_process",
                         help="The output directory where the processed file will be written.")
     
     args = parser.parse_args()

@@ -13,6 +13,11 @@ import torch
 import logging
 logger = logging.getLogger(__name__)
 
+FILE_ADD = '<FILE_ADD>'
+FILE_DELETE = '<FILE_DELETE>'
+FILE_END = '<FILE_END>'
+
+
 REPLACE = '<REPLACE>'
 REPLACE_OLD = '<REPLACE_OLD>'
 REPLACE_NEW = '<REPLACE_NEW>'
