@@ -10,3 +10,7 @@ events.out.*
 saved_model/*
 *.tar.gz
 #
+
+*.zip
+
+exp/

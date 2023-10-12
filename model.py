@@ -11,7 +11,7 @@ import copy
 import sys
 # from models.RvNNRvNNASTCodeAttn import BatchASTEncoder
 import logging
-from util import REPLACE, REPLACE_OLD, REPLACE_NEW,REPLACE_END,INSERT,INSERT_OLD,INSERT_NEW ,INSERT_END,DELETE,DELETE_END,KEEP,KEEP_END
+from util import FILE_ADD, FILE_DELETE, FILE_END, REPLACE, REPLACE_OLD, REPLACE_NEW,REPLACE_END,INSERT,INSERT_OLD,INSERT_NEW ,INSERT_END,DELETE,DELETE_END,KEEP,KEEP_END
 from transformers import T5ForConditionalGeneration
 logger = logging.getLogger(__name__)
 
